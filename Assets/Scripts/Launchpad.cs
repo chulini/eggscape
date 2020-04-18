@@ -8,8 +8,8 @@ public class Launchpad : MonoBehaviour
     [SerializeField] private float invulnerabilityTime;
     [SerializeField] Rigidbody _rb;
     [SerializeField] IntReference eggInvulnerability;
-    [SerializeField] FloatReference impulseUp;
-    [SerializeField] FloatReference impulseForward;
+    [SerializeField] private float impulseUp;
+    [SerializeField] private float impulseForward;
 
     private Transform GetParentMostTransform(Transform t) {
         while(t.parent != null) {
@@ -27,7 +27,7 @@ public class Launchpad : MonoBehaviour
         Transform collTransform = GetParentMostTransform(other.transform);
         if (collTransform.gameObject.tag == "Player") {
             Rigidbody collRb = collTransform.GetComponent<Rigidbody>();
-            Vector3 totalForce = Vector3.up * impulseUp.Value + transform.forward * impulseUp.Value;
+            Vector3 totalForce = Vector3.up * impulseUp + transform.forward * impulseForward;
             SetPlayerInvulnerable(invulnerabilityTime);
             collRb.AddForce(totalForce, ForceMode.Impulse);
         }
