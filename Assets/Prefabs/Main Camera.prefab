@@ -128,6 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 830b916983fc5fd4dad4b7845e05167f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraGameObject:
+    _useConstant: 0
+    _constantValue: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 9b7bf587db4387e48b76cb62dab3933f, type: 2}
   _playerGameObjectSO:
     _useConstant: 0
     _constantValue: {fileID: 0}
