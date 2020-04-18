@@ -126,6 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGameObject: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
+  centerOfMass:
+    _useConstant: 0
+    _constantValue: {x: 0, y: 0, z: 0}
+    _variable: {fileID: 11400000, guid: 56da1749ad0f2ed419ecf4f9208dc936, type: 2}
 --- !u!114 &3682914284120326258
 MonoBehaviour:
   m_ObjectHideFlags: 0
