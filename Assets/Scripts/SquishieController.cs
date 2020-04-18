@@ -56,7 +56,7 @@ public class SquishieController : MonoBehaviour
         } else if (squishingDown) {
             print("Moving: " + _rb.transform.position + currVelocity * Time.fixedDeltaTime);
             Vector3 newPosition = _rb.transform.position + currVelocity * Time.fixedDeltaTime;
-            Collider[] results = Physics.OverlapBox(transform.position, actualBoxCollider.bounds.size / 2, transform.rotation);
+            Collider[] results = Physics.OverlapBox(transform.position + actualBoxCollider.center, actualBoxCollider.bounds.size / 2, transform.rotation);
             if (CheckCollisions(results)) {
                 print("Collided!");
                 squishingDown = false;
@@ -74,7 +74,7 @@ public class SquishieController : MonoBehaviour
 
         int realCollisions = 0;
         foreach (Collider c in collisions) {
-            if (c.gameObject != gameObject) {
+            if (GetParentMostGameObject(c.gameObject) != gameObject) {
                 realCollisions += 1;
                 if (c.gameObject == playerObject.Value) {
                     playerHealth.Value -= 9999f;
@@ -82,6 +82,14 @@ public class SquishieController : MonoBehaviour
             }
         }
         return realCollisions > 0;
+    }
+
+    private GameObject GetParentMostGameObject(GameObject g) {
+        Transform t = g.transform;
+        while (t.parent != null) {
+            t = t.parent;
+        }
+        return t.gameObject;
     }
 
 
