@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private FloatVariable _axisThreshold;
     [SerializeField] private GameObjectVariable _cameraGameObject;
     [SerializeField] private FloatVariable _airControlAmount;
-
+    [SerializeField] private FloatReference _maxAngularVelocity;
 #pragma warning restore 0649
     private Rigidbody _rigidbody;
     private Transform _transform;
@@ -24,12 +24,14 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.maxAngularVelocity = _maxAngularVelocity.Value;
         _transform = transform;
     }
 
     private void Start()
     {
         _cameraTransform = _cameraGameObject.Value.transform;
+        
     }
 
     private void FixedUpdate()
