@@ -147,12 +147,16 @@ MonoBehaviour:
   _torqueMaxPower:
     _useConstant: 0
     _constantValue: {x: 0, y: 0}
-    _variable: {fileID: 11400000, guid: 7090eb934f79af244aa5fb630a9d3f5e, type: 2}
+    _variable: {fileID: 0}
   _xAxisMove: {fileID: 11400000, guid: c573fb3ea2957564ea2b8057d9d6adf4, type: 2}
   _yAxisMove: {fileID: 11400000, guid: 91962f6c5a197b64c98bfcaecb8fe0a0, type: 2}
   _axisThreshold: {fileID: 11400000, guid: 692f25d8e1cbd5c41ac5603099867853, type: 2}
   _cameraGameObject: {fileID: 11400000, guid: 9b7bf587db4387e48b76cb62dab3933f, type: 2}
   _airControlAmount: {fileID: 11400000, guid: 2357d41daaf5fd142a939d23f9be0079, type: 2}
+  _maxAngularVelocity:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: ce1b709f7d7b6b84a9bab712892683c9, type: 2}
 --- !u!114 &2619220431094781554
 MonoBehaviour:
   m_ObjectHideFlags: 0
