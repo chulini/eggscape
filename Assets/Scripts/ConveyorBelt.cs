@@ -12,20 +12,20 @@ public class ConveyorBelt : MonoBehaviour
     [SerializeField] Renderer _renderer;
 #pragma warning restore 0649
     private Rigidbody _rigidbody;
-    
+    private Transform _transform;
     private MaterialPropertyBlock _materialPropertyBlock;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _materialPropertyBlock = new MaterialPropertyBlock();
-        
+        _transform = transform;
     }
 
     private void FixedUpdate()
     {
         Vector3 pos = _rigidbody.position;
-        _rigidbody.position += Vector3.back * conveyorBeltSpeed.Value * Time.fixedDeltaTime;
+        _rigidbody.position += -transform.right * conveyorBeltSpeed.Value * Time.fixedDeltaTime;
         _rigidbody.MovePosition(pos);
         
         _renderer.GetPropertyBlock(_materialPropertyBlock);
