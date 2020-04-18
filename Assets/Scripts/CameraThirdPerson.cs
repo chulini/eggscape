@@ -15,6 +15,9 @@ namespace Camera
         [Header("Scriptable Objects (Write)")] [SerializeField]
         private GameObjectReference cameraGameObject;
         [Header("Scriptable Objects (Read)")]
+        [SerializeField] private FloatVariable _xAxisView;
+        [SerializeField] private FloatVariable _yAxisView;
+        
         [SerializeField] private GameObjectReference _playerGameObjectSO;
         [SerializeField] private FloatReference _distanceFromPlayerBackwards;
         [SerializeField] private FloatReference _distanceFromPlayerHeight;
@@ -79,8 +82,8 @@ namespace Camera
         void Update()
         {
             //TODO move Input.GetAxis to input manager and listen here scriptable objects
-            _yaw += _rotationSpeed.Value.x * Input.GetAxis("Mouse X");
-            _pitch -= _rotationSpeed.Value.y * Input.GetAxis("Mouse Y");
+            _yaw += _rotationSpeed.Value.x * _xAxisView.Value;
+            _pitch -= _rotationSpeed.Value.y * _yAxisView.Value;
             _cameraParentFollowingPlayer.eulerAngles = new Vector3(_pitch, _yaw, 0);
         }
 

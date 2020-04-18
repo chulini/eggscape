@@ -13,8 +13,10 @@ public class PlayerInput : MonoBehaviour
     private int playerId = 0;
 
     [Header("Scriptable Objects (Writing)")]
-    [SerializeField] private FloatVariable _xAxis;
-    [SerializeField] private FloatVariable _yAxis;
+    [SerializeField] private FloatVariable _xAxisMove;
+    [SerializeField] private FloatVariable _yAxisMove;
+    [SerializeField] private FloatVariable _xAxisView;
+    [SerializeField] private FloatVariable _yAxisView;
 #pragma warning restore 0649
 
     private void Start() {
@@ -23,7 +25,12 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (player.GetAxis("MoveHorizontal") != _xAxis.Value) _xAxis.Value = player.GetAxis("MoveHorizontal");
-        if (player.GetAxis("MoveVertical") != _yAxis.Value) _yAxis.Value = player.GetAxis("MoveVertical");
+        if (player.GetAxis("XAxisMove") != _xAxisMove.Value) _xAxisMove.Value = player.GetAxis("XAxisMove");
+        if (player.GetAxis("YAxisMove") != _yAxisMove.Value) _yAxisMove.Value = player.GetAxis("YAxisMove");
+        if (player.GetAxis("XAxisView") != _xAxisView.Value) _xAxisView.Value = player.GetAxis("XAxisView");
+        if (player.GetAxis("YAxisView") != _yAxisView.Value) _yAxisView.Value = player.GetAxis("YAxisView");
+        
+        // Debug.Log($"{_xAxisMove.Value} {_yAxisMove.Value} {_xAxisView.Value} {_yAxisView.Value}");
+        
     }
 }
