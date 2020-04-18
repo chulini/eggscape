@@ -132,6 +132,8 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {fileID: 0}
     _variable: {fileID: 11400000, guid: 9b7bf587db4387e48b76cb62dab3933f, type: 2}
+  _xAxisView: {fileID: 11400000, guid: ba797403c84f5d7478a5355b4534cbc0, type: 2}
+  _yAxisView: {fileID: 11400000, guid: 65675a885c84cd54199895a2ce629978, type: 2}
   _playerGameObjectSO:
     _useConstant: 0
     _constantValue: {fileID: 0}

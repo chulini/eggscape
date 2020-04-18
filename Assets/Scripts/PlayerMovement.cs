@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField] private Vector2Reference torqueMaxPower;
     [Header("Scriptable Objects (Reading)")]
-    [SerializeField] private FloatVariable _xAxis;
-    [SerializeField] private FloatVariable _yAxis;
+    [SerializeField] private FloatVariable _xAxisMove;
+    [SerializeField] private FloatVariable _yAxisMove;
     [SerializeField] private FloatVariable axisThreshold;
     [SerializeField] private GameObjectVariable cameraGameObject;
 #pragma warning restore 0649
@@ -30,14 +30,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log($"{_xAxis} {_yAxis}");
-        // Vector2 torquePower = Vector2.zero;
-        // // Forward/Backwards torque
-        // if (Mathf.Abs(_yAxis.Value) > axisThreshold.Value)
-        // {
-        //     torquePower = torquePower.WithX(torqueMaxPower.Value.y*_yAxis.Value);
-        // }
-        
-        // _rigidbody.AddTorque();
+        Vector3 forwardDirection = _cameraTransform.forward.WithY(0).normalized;
+        Vector3 rightDirection = _cameraTransform.right.WithY(0).normalized;
+        Vector3 torquePower = Vector3.zero;
+        // Forward/Backwards torque
+        if (Mathf.Abs(_yAxisMove.Value) > axisThreshold.Value)
+        {
+            torquePower += rightDirection * _yAxisMove.Value * torqueMaxPower.Value.y;
+        }
+        if (Mathf.Abs(_xAxisMove.Value) > axisThreshold.Value)
+        {
+            torquePower -= forwardDirection * _xAxisMove.Value * torqueMaxPower.Value.x;
+        }
+        _rigidbody.AddTorque(torquePower, ForceMode.Force);
     }
 }
