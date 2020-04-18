@@ -150,4 +150,4 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {x: 0, y: 0}
     _variable: {fileID: 11400000, guid: bb1608162cdc7ad48b73108a3300c424, type: 2}
-  maxPitch: 0
+  maxPitch: 80

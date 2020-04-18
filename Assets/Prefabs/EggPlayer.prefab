@@ -147,7 +147,7 @@ MonoBehaviour:
   _torqueMaxPower:
     _useConstant: 0
     _constantValue: {x: 0, y: 0}
-    _variable: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 003504b01bedf5c4f90a4c519f59b01d, type: 2}
   _xAxisMove: {fileID: 11400000, guid: c573fb3ea2957564ea2b8057d9d6adf4, type: 2}
   _yAxisMove: {fileID: 11400000, guid: 91962f6c5a197b64c98bfcaecb8fe0a0, type: 2}
   _axisThreshold: {fileID: 11400000, guid: 692f25d8e1cbd5c41ac5603099867853, type: 2}
