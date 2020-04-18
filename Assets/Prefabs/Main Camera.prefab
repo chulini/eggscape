@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5288459188842197816}
   - component: {fileID: 5288459188842197828}
   - component: {fileID: 5288459188842197831}
+  - component: {fileID: 524723826}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -142,12 +143,23 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: b94bf0e3d0fd1ce43898300fd7d4d43b, type: 2}
-  _distanceFromPlayerHeight:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: b94bf0e3d0fd1ce43898300fd7d4d43b, type: 2}
   _rotationSpeed:
     _useConstant: 0
     _constantValue: {x: 0, y: 0}
     _variable: {fileID: 11400000, guid: bb1608162cdc7ad48b73108a3300c424, type: 2}
   maxPitch: 80
+--- !u!114 &524723826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5288459188842197819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2178035f6bd8afd4f8cfe6443f7a6444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraShakeEvent: {fileID: 11400000, guid: 86db3de22c4436b4fb1f61f7ed9db836, type: 2}
+  shakeDecreasingSpeed: 4.38
+  perlinNoiseTimeSpeed: 11.09

@@ -20,7 +20,6 @@ namespace Camera
         
         [SerializeField] private GameObjectReference _playerGameObjectSO;
         [SerializeField] private FloatReference _distanceFromPlayerBackwards;
-        [SerializeField] private FloatReference _distanceFromPlayerHeight;
         [SerializeField] private Vector2Reference _rotationSpeed;
         [SerializeField] private float maxPitch;
 #pragma warning restore 0649
