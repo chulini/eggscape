@@ -18,7 +18,8 @@ public class Disk : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidbody.rotation = Quaternion.Euler(0,_rigidbody.rotation.eulerAngles.y + diskSpeed.Value*Time.fixedDeltaTime,0);
+        _rigidbody.MoveRotation(Quaternion.Euler(0,_rigidbody.rotation.eulerAngles.y + diskSpeed.Value*Time.fixedDeltaTime,0));
+        // _rigidbody.rotation = ;
         // _transform.localRotation = Quaternion.Euler(0,_transform.localRotation.eulerAngles.y + diskSpeed.Value*Time.fixedDeltaTime,0);
     }
 }
