@@ -17,7 +17,7 @@ public class Launchpad : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("something entered");
+        // Debug.Log("something entered");
         Transform collTransform = GetParentMostTransform(other.transform);
         if (collTransform.gameObject.tag == "Player") {
             Rigidbody collRb = collTransform.GetComponent<Rigidbody>();
@@ -27,10 +27,6 @@ public class Launchpad : MonoBehaviour
         }
     }
 
-    /*
-    private void OnTriggerEnter() {
-    }
-    */
     void SetPlayerInvulnerable(float invulnerableTime) {
         eggInvulnerability.Value += 1;
         Invoke("eggInvulnerability.Value -= 1;", invulnerableTime);
