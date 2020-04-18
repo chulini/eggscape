@@ -16,6 +16,10 @@ public class Launchpad : MonoBehaviour
         return t;
     }
 
+    private void Start() {
+        eggInvulnerability.Value = 0;
+    }
+
     private void OnTriggerEnter(Collider other) {
         // Debug.Log("something entered");
         Transform collTransform = GetParentMostTransform(other.transform);
@@ -29,6 +33,10 @@ public class Launchpad : MonoBehaviour
 
     void SetPlayerInvulnerable(float invulnerableTime) {
         eggInvulnerability.Value += 1;
-        Invoke("eggInvulnerability.Value -= 1;", invulnerableTime);
+        Invoke("DeactivateInvulnerability", invulnerableTime);
+    }
+
+    void DeactivateInvulnerability() {
+        eggInvulnerability.Value -= 1;
     }
 }

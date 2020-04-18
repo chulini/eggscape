@@ -9,20 +9,21 @@ public class FallDamage : MonoBehaviour
     public float velocityDamageMultiplier = 5f;
 
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private FloatReference eggHealth;
+    [SerializeField] private FloatReference _eggHealth;
+    [SerializeField] private IntReference _eggInvulnerability;
     private Vector3 _lastVelocity;
 
     private void Start() {
-        eggHealth.Value = 100f;
+        _eggHealth.Value = 100f;
     }
 
     private void FixedUpdate()
     {
         float deltaVelocity = (_rb.velocity - _lastVelocity).magnitude;
 
-        if (deltaVelocity > velocityDamageThreshold) {
+        if (deltaVelocity > velocityDamageThreshold && _eggInvulnerability.Value <= 0) {
             float damage = deltaVelocity * velocityDamageMultiplier;
-            eggHealth.Value -= damage;
+            _eggHealth.Value -= damage;
             Debug.Log("Last velocity: " + _lastVelocity.ToString());
             Debug.Log("This velocity: " + _rb.velocity.ToString());
 

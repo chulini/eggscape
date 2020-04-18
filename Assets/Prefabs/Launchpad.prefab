@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976c1670ab9b5234db655850159eabff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invulnerabilityTime: 0.1
+  invulnerabilityTime: 1
   _rb: {fileID: 6675365639211743745}
   eggInvulnerability:
     _useConstant: 0
