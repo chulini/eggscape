@@ -16,7 +16,7 @@ public class DamageComponent : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == _player.Value)
+        if (other.gameObject == _player.Value || other.gameObject.tag == "Player")
         {
             _damageCoroutine = StartCoroutine(DamagePlayer());
         }

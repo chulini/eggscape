@@ -58,7 +58,7 @@ namespace Camera
             _cameraParentFollowingPlayer = parentGameObject.transform;
             _transform.SetParent(_cameraParentFollowingPlayer);
             Cursor.visible = false;
-            
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnDisable()
