@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9377ffeb64ba30478a995a8ffc78ae8, type: 3}
-  m_Name: CameraDistanceFromPlayerVertical
+  m_Script: {fileID: 11500000, guid: d6a231661af38844caae4ded01abd631, type: 3}
+  m_Name: PlayerMaxTorque
   m_EditorClassIdentifier: 
   DeveloperDescription:
     _value: 
-  _value: 3.84
+  _value: {x: 2, y: 2}
   _readOnly: 0
   _raiseWarning: 1
   _isClamped: 0
-  _minClampedValue: 0
-  _maxClampedValue: 0
+  _minClampedValue: {x: 0, y: 0}
+  _maxClampedValue: {x: 0, y: 0}

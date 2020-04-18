@@ -22,7 +22,7 @@ namespace Camera
         [SerializeField] private FloatReference _distanceFromPlayerBackwards;
         [SerializeField] private FloatReference _distanceFromPlayerHeight;
         [SerializeField] private Vector2Reference _rotationSpeed;
-        
+        [SerializeField] private float maxPitch;
 #pragma warning restore 0649
         private Transform _transform;
         private Transform _playerTransformCache;
@@ -75,7 +75,7 @@ namespace Camera
         private void FixedUpdate()
         {
             _cameraParentFollowingPlayer.position = _playerTransform.position;
-            _transform.localPosition = new Vector3(0,_distanceFromPlayerHeight.Value,-_distanceFromPlayerBackwards.Value);
+            _transform.localPosition = new Vector3(0,0,-_distanceFromPlayerBackwards.Value);
             _transform.LookAt(_playerTransform.position + Vector3.up);
         }
 
@@ -84,6 +84,7 @@ namespace Camera
             //TODO move Input.GetAxis to input manager and listen here scriptable objects
             _yaw += _rotationSpeed.Value.x * _xAxisView.Value;
             _pitch -= _rotationSpeed.Value.y * _yAxisView.Value;
+            _pitch = _pitch.Clamp(-maxPitch, maxPitch);
             _cameraParentFollowingPlayer.eulerAngles = new Vector3(_pitch, _yaw, 0);
         }
 
