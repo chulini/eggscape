@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7073702210263847280}
   - component: {fileID: 376057604752817224}
   - component: {fileID: 3682914284120326258}
+  - component: {fileID: 2619220431094781554}
   m_Layer: 0
   m_Name: EggPlayer
   m_TagString: Player
@@ -150,3 +151,22 @@ MonoBehaviour:
   _yAxisMove: {fileID: 11400000, guid: 91962f6c5a197b64c98bfcaecb8fe0a0, type: 2}
   axisThreshold: {fileID: 11400000, guid: 692f25d8e1cbd5c41ac5603099867853, type: 2}
   cameraGameObject: {fileID: 11400000, guid: 9b7bf587db4387e48b76cb62dab3933f, type: 2}
+--- !u!114 &2619220431094781554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376057604752817231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953684af0ed65d94d85ab6cec677322f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityDamageThreshold: 5
+  velocityDamageMultiplier: 5
+  _rb: {fileID: 7073702210263847280}
+  eggHealth:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
