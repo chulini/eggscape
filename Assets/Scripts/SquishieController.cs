@@ -24,6 +24,7 @@ public class SquishieController : MonoBehaviour
     private bool windingUp;
     private Vector3 currVelocity;
     [SerializeField] private BoxCollider actualBoxCollider;
+    [SerializeField] private float delayTime;
 
     private Vector3 _spawnPosition;
     // [SerializeField] private BoxCollider triggerBoxCollider;
@@ -31,7 +32,7 @@ public class SquishieController : MonoBehaviour
     private void Start()
     {
         _spawnPosition = transform.position;
-        WindUp();
+        Invoke("WindUp", delayTime);
     }
 
     private void FixedUpdate() {
