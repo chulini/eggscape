@@ -20,7 +20,8 @@ public class DisplayEggHealth : MonoBehaviour
 
     private void Update()
     {
-        
+        // For testing
+        // _eggHealth.Value -= Time.deltaTime;
     }
 
     private void UpdateHealth() {
