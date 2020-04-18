@@ -7,16 +7,17 @@ using UnityEngine;
 public class ConveyorBelt : MonoBehaviour
 {
 #pragma warning disable 0649
-    [SerializeField] private FloatVariable conveyorBeltSpeed;
+    [SerializeField] FloatReference conveyorBeltSpeed;
+    [SerializeField] float speedToShader;
+    [SerializeField] Renderer _renderer;
 #pragma warning restore 0649
     private Rigidbody _rigidbody;
-    private Renderer _renderer;
+    
     private MaterialPropertyBlock _materialPropertyBlock;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _renderer = GetComponent<Renderer>();
         _materialPropertyBlock = new MaterialPropertyBlock();
         
     }
@@ -28,7 +29,7 @@ public class ConveyorBelt : MonoBehaviour
         _rigidbody.MovePosition(pos);
         
         _renderer.GetPropertyBlock(_materialPropertyBlock);
-        _materialPropertyBlock.SetFloat("Vector1_B5B16460", conveyorBeltSpeed.Value);
+        _materialPropertyBlock.SetFloat("Vector1_B5B16460", conveyorBeltSpeed.Value*speedToShader);
         _renderer.SetPropertyBlock(_materialPropertyBlock);
     }
 }
