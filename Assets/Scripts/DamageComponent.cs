@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using ScriptableObjectArchitecture;
+﻿using ScriptableObjectArchitecture;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,36 +10,52 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private FloatReference _eggHealth;
     [SerializeField] private GameObjectReference _player;
 
-    private Coroutine _damageCoroutine;
-    
-    private void OnTriggerEnter(Collider other)
+    private float _timeElapsed;
+    private bool _takingDamage;
+
+    private void Awake()
     {
-        if (other.gameObject == _player.Value || other.gameObject.tag == "Player")
-        {
-            _damageCoroutine = StartCoroutine(DamagePlayer());
-        }
+        _timeElapsed = _damageInterval;
     }
 
+    private void Update()
+    {
+        if (!_takingDamage)
+        {
+            _timeElapsed = _damageInterval;
+            
+            return;
+        }
+        
+        _timeElapsed += Time.deltaTime;
+
+        if (_timeElapsed < _damageInterval)
+        {
+            return;
+        }
+
+        _timeElapsed = 0;
+        _eggHealth.Value -= CalculateDamage();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject != _player.Value && !other.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
+
+        _takingDamage = true;
+    }
+    
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == _player.Value)
-        {
-            StopCoroutine(_damageCoroutine);
-        }
+        _timeElapsed = _damageInterval;
+        _takingDamage = false;
     }
 
     private float CalculateDamage()
     {
         return Random.Range(_damageRange.x, _damageRange.y);
-    }
-
-    private IEnumerator DamagePlayer()
-    {
-        while (true)
-        {
-            _eggHealth.Value -= CalculateDamage();
-            
-            yield return new WaitForSeconds(_damageInterval);
-        }
     }
 }
