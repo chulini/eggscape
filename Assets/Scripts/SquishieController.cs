@@ -55,11 +55,11 @@ public class SquishieController : MonoBehaviour
                 WindUpRest();
             }
         } else if (squishingDown) {
-            print("Moving: " + _rb.transform.position + currVelocity * Time.fixedDeltaTime);
+            // print("Moving: " + _rb.transform.position + currVelocity * Time.fixedDeltaTime);
             Vector3 newPosition = _rb.transform.position + currVelocity * Time.fixedDeltaTime;
             Collider[] results = Physics.OverlapBox(transform.position + actualBoxCollider.center, actualBoxCollider.bounds.size / 2, transform.rotation);
             if (CheckCollisions(results)) {
-                print("Collided!");
+                // print("Collided!");
                 squishingDown = false;
                 SquishDownRest();
             } else {
@@ -95,7 +95,7 @@ public class SquishieController : MonoBehaviour
 
 
     private void SquishDown() {
-        print("SquishDown");
+        // print("SquishDown");
         squishingDown = true;
         currVelocity = -transform.up * squishDownSpeed;
     }
@@ -105,24 +105,24 @@ public class SquishieController : MonoBehaviour
     }
 
     private void SquishedUp() {
-        print("SquishedUp");
+        // print("SquishedUp");
         movingToInitial = true;
         currVelocity = transform.up * (Vector3.Distance(_rb.transform.position , _spawnPosition) / squishedUpTime);
     }
 
     private void SquishedUpRest() {
-        print("SquishedUpRest");
+        // print("SquishedUpRest");
         Invoke("WindUp", squishedUpRestTime);
     }
 
     private void WindUp() {
-        print("Wind Up");
+        // print("Wind Up");
         windingUp = true;
         currVelocity = transform.up * (Vector3.Distance(_rb.transform.position, _spawnPosition + transform.up * windUpAmount) / windUpTime);
     }
 
     private void WindUpRest() {
-        print("Wind Up Rest");
+        // print("Wind Up Rest");
         Invoke("SquishDown", windUpRestTime);
     }
 }
