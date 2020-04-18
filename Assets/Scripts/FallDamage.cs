@@ -24,11 +24,8 @@ public class FallDamage : MonoBehaviour
         if (deltaVelocity > velocityDamageThreshold && _eggInvulnerability.Value <= 0) {
             float damage = deltaVelocity * velocityDamageMultiplier;
             _eggHealth.Value -= damage;
-            Debug.Log("Last velocity: " + _lastVelocity.ToString());
-            Debug.Log("This velocity: " + _rb.velocity.ToString());
-
-            Debug.Log("Velocity: " + deltaVelocity.ToString());
-            Debug.Log("Damage: " + (damage).ToString());
+            // Debug.Log("Velocity: " + deltaVelocity.ToString());
+            // Debug.Log("Damage: " + (damage).ToString());
         }
         _lastVelocity = _rb.velocity;
     }
