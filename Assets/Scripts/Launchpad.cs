@@ -27,11 +27,9 @@ public class Launchpad : MonoBehaviour
         Transform collTransform = GetParentMostTransform(other.transform);
         if (collTransform.gameObject.tag == "Player") {
             Rigidbody collRb = collTransform.GetComponent<Rigidbody>();
-            Vector3 forceUp = Vector3.up * impulseUp.Value;
-            Vector3 forceForward = -transform.forward * impulseUp.Value;
-
+            Vector3 totalForce = Vector3.up * impulseUp.Value + transform.forward * impulseUp.Value;
             SetPlayerInvulnerable(invulnerabilityTime);
-            collRb.AddForce(forceUp, ForceMode.Impulse);
+            collRb.AddForce(totalForce, ForceMode.Impulse);
         }
     }
 
