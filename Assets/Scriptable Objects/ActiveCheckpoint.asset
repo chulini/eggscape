@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edc690a6e84028a488f0c8e94cbc98bd, type: 3}
-  m_Name: PlayerGameObject
+  m_Script: {fileID: 11500000, guid: 313ad58cf154aae48aa24ce38ce05166, type: 3}
+  m_Name: ActiveCheckpoint
   m_EditorClassIdentifier: 
   DeveloperDescription:
     _value: 
-  _value: {fileID: 376057604752817231, guid: 1f6af2b0d70a0274f90128b35d326a22, type: 3}
+  _value: {fileID: 0}
   _readOnly: 0
   _raiseWarning: 1
   _isClamped: 0
