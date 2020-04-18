@@ -12,6 +12,8 @@ namespace Camera
     public class CameraThirdPerson : MonoBehaviour
     {
 #pragma warning disable 0649
+        [Header("Scriptable Objects (Write)")] [SerializeField]
+        private GameObjectReference cameraGameObject;
         [Header("Scriptable Objects (Read)")]
         [SerializeField] private GameObjectReference _playerGameObjectSO;
         [SerializeField] private FloatReference _distanceFromPlayerBackwards;
@@ -47,15 +49,18 @@ namespace Camera
         
         private void OnEnable()
         {
+            cameraGameObject.Value = gameObject;
             // Create parent game object following player
             GameObject parentGameObject = new GameObject("Camera Parent");
             _cameraParentFollowingPlayer = parentGameObject.transform;
             _transform.SetParent(_cameraParentFollowingPlayer);
             Cursor.visible = false;
+            
         }
 
         private void OnDisable()
         {
+            cameraGameObject.Value = null;
             // Unparent camera and destroy parent game object following player
             _transform.SetParent(null);
             Destroy(_cameraParentFollowingPlayer.gameObject);
