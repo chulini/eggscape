@@ -15,6 +15,10 @@ GameObject:
   - component: {fileID: 6223240985086625327}
   - component: {fileID: 6223240985086625324}
   - component: {fileID: 6223240985086625325}
+  - component: {fileID: 631239402282793662}
+  - component: {fileID: 6758980466074362747}
+  - component: {fileID: 1053103481951167984}
+  - component: {fileID: 480322383}
   m_Layer: 0
   m_Name: ParticleToggler
   m_TagString: Untagged
@@ -98,7 +102,7 @@ MonoBehaviour:
   period:
     _useConstant: 0
     _constantValue: 0
-    _variable: {fileID: 0}
+    _variable: {fileID: 11400000, guid: 381fa161de51c5545b433a45eb2f7542, type: 2}
 --- !u!198 &6223240985086625327
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4837,3 +4841,76 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: 381fa161de51c5545b433a45eb2f7542, type: 2}
+--- !u!114 &631239402282793662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223240985086625314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01663543cbed5864c804683cad328782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageRange: {x: 1, y: 3}
+  _eggHealth:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
+  _player:
+    _useConstant: 0
+    _constantValue: {fileID: 0}
+    _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
+  _rb: {fileID: 0}
+--- !u!54 &6758980466074362747
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223240985086625314}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1053103481951167984
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223240985086625314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 5.04, z: 1.5}
+  m_Center: {x: 0, y: 2.52, z: 0}
+--- !u!114 &480322383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6223240985086625314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01663543cbed5864c804683cad328782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageRange: {x: 1, y: 3}
+  _eggHealth:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
+  _player:
+    _useConstant: 0
+    _constantValue: {fileID: 0}
+    _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
+  _rb: {fileID: 6758980466074362747}

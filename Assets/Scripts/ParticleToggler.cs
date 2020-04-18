@@ -5,6 +5,7 @@ using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+[RequireComponent(typeof(DamageComponent))]
 public class ParticleToggler : MonoBehaviour
 {
 #pragma warning disable 0649
@@ -12,9 +13,12 @@ public class ParticleToggler : MonoBehaviour
 #pragma warning restore 0649
     private ParticleSystem _particleSystem;
     private bool particlesOn = true;
+    private Collider _collider;
+    
     private void Awake()
     {
         _particleSystem = GetComponent<ParticleSystem>();
+        _collider = GetComponent<Collider>();
     }
 
     private void OnEnable()
@@ -42,13 +46,13 @@ public class ParticleToggler : MonoBehaviour
     {
         if (particlesOn)
         {
-            Debug.Log($"STOP");
             _particleSystem.Stop();
+            _collider.enabled = false;
         }
         else
         {
-            Debug.Log($"PLAY");
             _particleSystem.Play();
+            _collider.enabled = true;
         }
 
         particlesOn = !particlesOn;
