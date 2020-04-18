@@ -12,17 +12,23 @@ public class FallDamage : MonoBehaviour
     [SerializeField] private FloatReference eggHealth;
     private Vector3 _lastVelocity;
 
+    private void Start() {
+        eggHealth.Value = 100f;
+    }
+
     private void FixedUpdate()
     {
-        Vector3 currVelocity = _rb.velocity;
-        float deltaVelocity = (currVelocity - _lastVelocity).magnitude;
-        _lastVelocity = currVelocity;
+        float deltaVelocity = (_rb.velocity - _lastVelocity).magnitude;
 
         if (deltaVelocity > velocityDamageThreshold) {
             float damage = deltaVelocity * velocityDamageMultiplier;
             eggHealth.Value -= damage;
-            // Debug.Log("Velocity: " + deltaVelocity.ToString());
-            // Debug.Log("Damage: " + (damage).ToString());
+            Debug.Log("Last velocity: " + _lastVelocity.ToString());
+            Debug.Log("This velocity: " + _rb.velocity.ToString());
+
+            Debug.Log("Velocity: " + deltaVelocity.ToString());
+            Debug.Log("Damage: " + (damage).ToString());
         }
+        _lastVelocity = _rb.velocity;
     }
 }

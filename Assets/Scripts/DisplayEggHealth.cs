@@ -12,6 +12,7 @@ public class DisplayEggHealth : MonoBehaviour
     private void OnEnable()
     {
         _eggHealth.AddListener(UpdateHealth);
+        UpdateHealth();
     }
 
     private void OnDisable() {

@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953684af0ed65d94d85ab6cec677322f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityDamageThreshold: 5
+  velocityDamageThreshold: 3
   velocityDamageMultiplier: 5
   _rb: {fileID: 7073702210263847280}
   eggHealth:
