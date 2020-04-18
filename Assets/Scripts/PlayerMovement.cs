@@ -24,12 +24,14 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.maxAngularVelocity = 50f;
         _transform = transform;
     }
 
     private void Start()
     {
         _cameraTransform = _cameraGameObject.Value.transform;
+        
     }
 
     private void FixedUpdate()
@@ -52,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movementDirection = (forwardDirection * _yAxisMove.Value + rightDirection * _xAxisMove.Value).WithY(0f).normalized;
         // bool isGrounded = Physics.Raycast(transform.position + new Vector3(0f, 0.1f, 0f), Vector3.down, 0.2f);
         if (!_grounded) {
-            Debug.Log("Controlling the air!");
+            // Debug.Log("Controlling the air!");
             _rigidbody.AddForce(movementDirection * _airControlAmount, ForceMode.Acceleration);
         }
     }

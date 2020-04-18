@@ -464,6 +464,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: EggPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7073702210263847280, guid: 1f6af2b0d70a0274f90128b35d326a22,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7073702210263847280, guid: 1f6af2b0d70a0274f90128b35d326a22,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465116854165172188, guid: 1f6af2b0d70a0274f90128b35d326a22,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6af2b0d70a0274f90128b35d326a22, type: 3}
 --- !u!1001 &5288459189010602118
