@@ -7,7 +7,6 @@ public class DamageComponent : MonoBehaviour
     
     [SerializeField] private FloatReference _eggHealth;
     [SerializeField] private GameObjectReference _player;
-    [SerializeField] private Rigidbody _rb;
     
     private void OnTriggerEnter(Collider other)
     {
