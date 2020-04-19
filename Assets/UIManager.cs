@@ -10,6 +10,7 @@ using Cursor = UnityEngine.Cursor;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private BoolGameEvent _onPauseEvent;
+    [SerializeField] private GameObject startMenuContainer;
     [SerializeField] private GameObject pauseMenuContainer;
 
     private void Awake()
@@ -19,7 +20,9 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 0;
+        _onPauseEvent.Raise(true);
+        startMenuContainer.SetActive(true);
+        pauseMenuContainer.SetActive(false);
     }
 
     private void OnEnable()
@@ -37,21 +40,23 @@ public class UIManager : MonoBehaviour
     {
         Cursor.visible = paused;
         Cursor.lockState = paused ? CursorLockMode.None : CursorLockMode.Locked;
+        startMenuContainer.SetActive(false);
         pauseMenuContainer.SetActive(paused);
     }
 
     public void PlayClicked()
     {
-        Time.timeScale = 1;
+        _onPauseEvent.Raise(false);
     }
+    public void ResumeClicked()
+    {
+        _onPauseEvent.Raise(false);
+    }
+
 
     public void QuitClicked()
     {
         Application.Quit();
     }
 
-    public void ResumeButtonClick()
-    {
-        _onPauseEvent.Raise(false);
-    }
 }
