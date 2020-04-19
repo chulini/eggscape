@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Scenes/UI.unity
     guid: 3287f2d671a780f4096b4441dd591260
+  - enabled: 1
+    path: Assets/Scenes/Final Scenes/01_Rene_VentilationShaft.unity
+    guid: 837bc69124f266d47ab0105bbcc44721
   m_configObjects: {}
