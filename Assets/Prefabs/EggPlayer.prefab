@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 376057604752817224}
   - component: {fileID: 3682914284120326258}
   - component: {fileID: 2619220431094781554}
+  - component: {fileID: 1828820910846376523}
   m_Layer: 0
   m_Name: EggPlayer
   m_TagString: Player
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocityDamageThreshold: 5
-  velocityDamageMultiplier: 3
+  velocityDamageMultiplier: 5
   _rb: {fileID: 7073702210263847280}
   _eggHealth:
     _useConstant: 0
@@ -180,6 +181,23 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: 9b5ac4c628c074942a723edc49fc404f, type: 2}
+--- !u!114 &1828820910846376523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376057604752817231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc28aa5b9bc5ff49ad5e76c4111af26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eggHealth:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
+  _meshRenderer: {fileID: 376057604752817226}
 --- !u!1 &9022019608972195189
 GameObject:
   m_ObjectHideFlags: 0
