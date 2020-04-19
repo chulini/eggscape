@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 4979812731776365319}
   - component: {fileID: 788041727635586584}
   - component: {fileID: 6703314019815948624}
+  - component: {fileID: 1695781083}
   m_Layer: 0
   m_Name: RotatingVent
   m_TagString: Untagged
@@ -111,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 4979812731776365318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 7205754093153734652}
   - {fileID: 1800266621453457095}
@@ -159,6 +160,32 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {fileID: 0}
     _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
+  _onPlayerDied: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
+--- !u!114 &1695781083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979812731776365318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb3b6e96ff5e084a8a45f331661f7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diskSpeedX:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 0}
+  diskSpeedY:
+    _useConstant: 1
+    _constantValue: 200
+    _variable: {fileID: 0}
+  diskSpeedZ:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 0}
+  _rigidbody: {fileID: 788041727635586584}
 --- !u!64 &936044672852286278
 MeshCollider:
   m_ObjectHideFlags: 0
