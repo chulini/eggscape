@@ -9,6 +9,7 @@ public class EggKiller : MonoBehaviour
 #pragma warning disable 0649
     [SerializeField] private FloatReference playerHealth;
     [SerializeField] private GameObject brokenEggPrefab;
+    [SerializeField] private GameEvent playerDied;
 #pragma warning restore 0649
     private void OnEnable()
     {
@@ -25,6 +26,7 @@ public class EggKiller : MonoBehaviour
         {
             Instantiate(brokenEggPrefab, transform.position, transform.rotation);       
             DestroyImmediate(gameObject);
+            playerDied.Raise();
         }
     }
 }
