@@ -3,7 +3,6 @@ using JetBrains.Annotations;
 using ScriptableObjectArchitecture;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Camera
 {
@@ -62,9 +61,12 @@ namespace Camera
             GameObject parentGameObject = new GameObject("Camera Parent");
             _cameraParentFollowingPlayer = parentGameObject.transform;
             _transform.SetParent(_cameraParentFollowingPlayer);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             Destroy(GetComponent<AudioListener>());
             _cameraParentFollowingPlayer.gameObject.AddComponent<AudioListener>();
-            SceneManager.LoadScene("UI", LoadSceneMode.Additive);
+
+
         }
 
         private void OnDisable()

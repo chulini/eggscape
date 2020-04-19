@@ -5,8 +5,8 @@ public class CheckpointComponent : MonoBehaviour
 {
     [SerializeField] private GameObjectReference _player;
     [SerializeField] private CheckpointComponentVariable _activeCheckpoint;
-    [SerializeField] private FloatGameEvent _onPlayerHealed;
-    
+    [SerializeField] private CheckpointVisualComponent _checkpointVisual;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject != _player.Value)
@@ -14,11 +14,16 @@ public class CheckpointComponent : MonoBehaviour
             return;
         }
 
-        HealHandler();
-    }
+        if (null != _activeCheckpoint.Value && null != _activeCheckpoint.Value._checkpointVisual)
+        {
+            _activeCheckpoint.Value._checkpointVisual.DeactivateCheckpoint();
+        }
 
-    private void HealHandler()
-    {
-        _onPlayerHealed.Raise(100f);
+        if (null != _checkpointVisual)
+        {
+            _checkpointVisual.ActivateCheckpoint();
+        }
+        
+        _activeCheckpoint.Value = this;
     }
 }

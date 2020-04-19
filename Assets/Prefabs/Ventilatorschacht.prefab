@@ -112,6 +112,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vebntilationschaft
       objectReference: {fileID: 0}
+    - target: {fileID: -113181020801827196, guid: 559799f235595dc4ca794b8274b31595,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 780d88710fa8f734b987838634170e16, type: 2}
+    - target: {fileID: 8304545770963488453, guid: 559799f235595dc4ca794b8274b31595,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 780d88710fa8f734b987838634170e16, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 559799f235595dc4ca794b8274b31595, type: 3}
 --- !u!4 &102516909603974526 stripped
