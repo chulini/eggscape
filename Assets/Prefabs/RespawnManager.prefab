@@ -43,12 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d179e04e04ed4f849f10b3be9779f94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eggHealth:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
   _activeCheckpoint: {fileID: 11400000, guid: 8b3800a9f1ccb8b4da3a9d54fdd27afc, type: 2}
   _playerReference:
     _useConstant: 0
     _constantValue: {fileID: 0}
     _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
+  _playerDiedEvent: {fileID: 11400000, guid: a39317045802cf1439406cb23e04707a, type: 2}
+  _eggHealth: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
+  _playerSpawnedEvent: {fileID: 11400000, guid: adb372bba713a6845b52d1c09a581f8f,
+    type: 2}
+  _onRespawnPlayer: {fileID: 11400000, guid: 6a61ef28937ed6c4991f17f939e1958c, type: 2}
+  _onScreenFade: {fileID: 11400000, guid: 24408aa0925f8af47b5ed65c051b26c0, type: 2}
+  _respawnTime: 1
