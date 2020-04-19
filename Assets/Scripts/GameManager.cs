@@ -7,9 +7,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private CheckpointComponentVariable _activeCheckpoint;
     [SerializeField] private CheckpointComponent _levelStartPoint;
+    [SerializeField] private FloatVariable _eggHealth;
     [SerializeField] private GameEvent _onRespawnPlayer;
     [SerializeField] private BoolGameEvent _onPausedEvent;
     [SerializeField] private FloatGameEvent _onScreenFade;
+    [SerializeField] private FloatGameEvent _onPlayerHeal;
     [SerializeField] private Canvas _screenFade;
     [SerializeField] private float _fadeChangeStep = 0.05f;
     [SerializeField] private float _fadeChangeInterval = 0.05f;
@@ -40,12 +42,14 @@ public class GameManager : MonoBehaviour
     {
         _onScreenFade.AddListener(OnFade);
         _onPausedEvent.AddListener(OnPause);
+        _onPlayerHeal.AddListener(OnPlayerHeal);
     }
 
     private void OnDisable() 
     {
         _onScreenFade.RemoveListener(OnFade);
         _onPausedEvent.RemoveListener(OnPause);
+        _onPlayerHeal.RemoveListener(OnPlayerHeal);
     }
 
     private void SetSpawnPoint()
@@ -136,5 +140,10 @@ public class GameManager : MonoBehaviour
         }
 
         Time.timeScale = _currentTimeScale;
+    }
+
+    private void OnPlayerHeal(float amount)
+    {
+        _eggHealth.Value += amount;
     }
 }
