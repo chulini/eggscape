@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6119352072228956424}
   - component: {fileID: 5602547664963137288}
-  - component: {fileID: 2185864411747540846}
+  - component: {fileID: 1419690399}
   m_Layer: 0
   m_Name: Rewired Input Manager
   m_TagString: Untagged
@@ -250,6 +250,15 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 4
+      _name: PauseMenu
+      _type: 1
+      _descriptiveName: Pause oder Menu button
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -259,7 +268,7 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 00000000010000000300000002000000
+        actionIds: 0000000001000000030000000200000004000000
     inputBehaviors:
     - _id: 0
       _name: Default
@@ -621,6 +630,17 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 4
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 27
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     mouseMaps:
     - id: 0
       categoryId: 0
@@ -656,7 +676,7 @@ MonoBehaviour:
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 2
-    actionIdCounter: 4
+    actionIdCounter: 5
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 1
@@ -673,7 +693,7 @@ MonoBehaviour:
     controllerMapEnablerSetIdCounter: 0
   _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
     type: 2}
---- !u!114 &2185864411747540846
+--- !u!114 &1419690399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -689,3 +709,7 @@ MonoBehaviour:
   _yAxisMove: {fileID: 11400000, guid: 91962f6c5a197b64c98bfcaecb8fe0a0, type: 2}
   _xAxisView: {fileID: 11400000, guid: ba797403c84f5d7478a5355b4534cbc0, type: 2}
   _yAxisView: {fileID: 11400000, guid: 65675a885c84cd54199895a2ce629978, type: 2}
+  _onPauseEvent: {fileID: 11400000, guid: bf6f600c02c7eed4bac8ba6d80a10c40, type: 2}
+  _onPlayerDiedEvent: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
+  _onPlayerSpawnedEvent: {fileID: 11400000, guid: adb372bba713a6845b52d1c09a581f8f,
+    type: 2}

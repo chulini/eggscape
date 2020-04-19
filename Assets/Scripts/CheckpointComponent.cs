@@ -13,9 +13,17 @@ public class CheckpointComponent : MonoBehaviour
         {
             return;
         }
+
+        if (null != _activeCheckpoint.Value && null != _activeCheckpoint.Value._checkpointVisual)
+        {
+            _activeCheckpoint.Value._checkpointVisual.DeactivateCheckpoint();
+        }
+
+        if (null != _checkpointVisual)
+        {
+            _checkpointVisual.ActivateCheckpoint();
+        }
         
-        _activeCheckpoint.Value._checkpointVisual.DeactivateCheckpoint();
-        _checkpointVisual.ActivateCheckpoint();
         _activeCheckpoint.Value = this;
     }
 }
