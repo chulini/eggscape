@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3682914284120326258}
   - component: {fileID: 2619220431094781554}
   - component: {fileID: 1828820910846376523}
+  - component: {fileID: 4638676146507864378}
   m_Layer: 0
   m_Name: EggPlayer
   m_TagString: Player
@@ -198,6 +199,24 @@ MonoBehaviour:
     _constantValue: 0
     _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
   _meshRenderer: {fileID: 376057604752817226}
+--- !u!114 &4638676146507864378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376057604752817231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f82f8fac63f654099317e59b5c89f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
+  brokenEggPrefab: {fileID: 3776472838307927236, guid: 0490462ee83289946a07e2c5d830f57e,
+    type: 3}
 --- !u!1 &9022019608972195189
 GameObject:
   m_ObjectHideFlags: 0

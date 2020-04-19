@@ -209,12 +209,27 @@ PrefabInstance:
     - target: {fileID: 982380909529015329, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
       propertyPath: diskSpeedX._constantValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 982380909529015329, guid: 9b8b210cef29344479346432fc79851b,
+        type: 3}
+      propertyPath: diskSpeedY._useConstant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 982380909529015329, guid: 9b8b210cef29344479346432fc79851b,
+        type: 3}
+      propertyPath: diskSpeedY._constantValue
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 982380909529015329, guid: 9b8b210cef29344479346432fc79851b,
+        type: 3}
+      propertyPath: diskSpeedZ._useConstant
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6224123434381953186, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
       propertyPath: m_Name
-      value: TurningCylinder1 Variant
+      value: TurningCylinder1
       objectReference: {fileID: 0}
     - target: {fileID: 6963632362277309921, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
@@ -229,7 +244,7 @@ PrefabInstance:
     - target: {fileID: 6963632362277309921, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.12
+      value: 3.46
       objectReference: {fileID: 0}
     - target: {fileID: 6963632362277309921, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
