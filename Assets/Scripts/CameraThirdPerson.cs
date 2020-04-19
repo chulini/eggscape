@@ -77,6 +77,8 @@ namespace Camera
 
         private void FixedUpdate()
         {
+            if (_playerTransform == null)
+                return;
             _cameraParentFollowingPlayer.position = _playerTransform.position;
             
             _transform.localPosition = new Vector3(0,0,-_currentBackwardsDistance);
