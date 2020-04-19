@@ -25,10 +25,12 @@ public class EggKiller : MonoBehaviour
     {
         if (playerHealth.Value <= 0)
         {
+            
             Instantiate(brokenEggPrefab, transform.position, transform.rotation);       
             DestroyImmediate(gameObject);
             playerDied.Raise();
             cameraShakeEvent.Raise(3f);
+            
         }
     }
 }

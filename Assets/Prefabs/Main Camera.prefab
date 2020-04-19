@@ -184,9 +184,7 @@ MonoBehaviour:
   playerDied: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
   effectsAudioSource: {fileID: 2224521339927549318}
   bgMusicAudioSource: {fileID: 8962302271012013738}
-  crackSounds:
-  - {fileID: 8300000, guid: cd561458e8bbbc540b4f05c02d25e1f8, type: 3}
-  - {fileID: 8300000, guid: e7ac8a281770f2047a56de724af9b779, type: 3}
+  splatClip: {fileID: 8300000, guid: cc14d2594d9af7f468f1aaf5efad93dd, type: 3}
 --- !u!82 &8962302271012013738
 AudioSource:
   m_ObjectHideFlags: 0
