@@ -128,40 +128,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1227954883, guid: 2eed3b261dc139a4f8f1382841ca9e1c, type: 3}
+      propertyPath: MaxDistance
+      value: 13.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227954883, guid: 2eed3b261dc139a4f8f1382841ca9e1c, type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4942382343653195859, guid: 2eed3b261dc139a4f8f1382841ca9e1c,
         type: 3}
       propertyPath: m_Name
       value: ConveyorBelt
       objectReference: {fileID: 0}
-    - target: {fileID: 7982107348275226745, guid: 2eed3b261dc139a4f8f1382841ca9e1c,
-        type: 3}
-      propertyPath: conveyorBeltSpeed._useConstant
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7982107348275226745, guid: 2eed3b261dc139a4f8f1382841ca9e1c,
-        type: 3}
-      propertyPath: conveyorBeltSpeed._constantValue
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 7982107348275226745, guid: 2eed3b261dc139a4f8f1382841ca9e1c,
-        type: 3}
-      propertyPath: speedToShader
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8272416896906326592, guid: 2eed3b261dc139a4f8f1382841ca9e1c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.464916
+      value: 3.35
       objectReference: {fileID: 0}
     - target: {fileID: 8272416896906326592, guid: 2eed3b261dc139a4f8f1382841ca9e1c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8272416896906326592, guid: 2eed3b261dc139a4f8f1382841ca9e1c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.694471
+      value: -2.93
       objectReference: {fileID: 0}
     - target: {fileID: 8272416896906326592, guid: 2eed3b261dc139a4f8f1382841ca9e1c,
         type: 3}

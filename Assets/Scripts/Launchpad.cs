@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Rewired.Demos;
 using UnityEngine;
@@ -6,6 +7,7 @@ using ScriptableObjectArchitecture;
 
 public class Launchpad : MonoBehaviour
 {
+    [SerializeField] private AudioClip launchClip;
     [SerializeField] private float invulnerabilityTime;
     [SerializeField] Rigidbody _rb;
     [SerializeField] IntReference eggInvulnerability;
@@ -14,11 +16,17 @@ public class Launchpad : MonoBehaviour
     [SerializeField] private float bulletTimeDuration;
     [SerializeField] private float bulletTimeTimeScale;
     [SerializeField] private float bulletTimeTransitionDuration;
+    private AudioSource _audioSource;
     private Transform GetParentMostTransform(Transform t) {
         while(t.parent != null) {
             t = t.parent;
         }
         return t;
+    }
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start() {
@@ -34,6 +42,7 @@ public class Launchpad : MonoBehaviour
             SetPlayerInvulnerable(invulnerabilityTime);
             collRb.AddForce(totalForce, ForceMode.Impulse);
             StartCoroutine(BulletTime(bulletTimeDuration));
+            _audioSource.PlayOneShot(launchClip);
         }
     }
 
