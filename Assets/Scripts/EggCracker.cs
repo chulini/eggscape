@@ -7,7 +7,7 @@ public class EggCracker : MonoBehaviour
 {
     [SerializeField] private FloatReference _eggHealth;
     [SerializeField] private MeshRenderer _meshRenderer;
-
+    [SerializeField] private AudioClip[] cracks;
     void Start()
     {
         // _material = _meshRenderer.sharedMaterial;
@@ -22,5 +22,9 @@ public class EggCracker : MonoBehaviour
         if(_meshRenderer != null)
             _meshRenderer.sharedMaterial.SetFloat("_cracks", value);
 
+        if (_eggHealth.Value < 100)
+        {
+            GetComponent<AudioSource>().PlayOneShot(cracks[Random.Range(0,cracks.Length)]);
+        }
     }
 }
