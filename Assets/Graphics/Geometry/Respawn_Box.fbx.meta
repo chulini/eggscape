@@ -2,7 +2,61 @@ fileFormatVersion: 2
 guid: c05b388c82f3edd48b241757c2f84574
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 1854801791077976276
+    second: CheckpointAction
+  - first:
+      74: 829563537589095520
+    second: DoorAction
+  - first:
+      74: -1605894673224503311
+    second: Door.001Action.001
+  - first:
+      74: -2144244329224892641
+    second: Checkpoint|CheckpointAction
+  - first:
+      74: 6685108332621429336
+    second: Checkpoint|Door.001Action
+  - first:
+      74: -3909038012550805186
+    second: Checkpoint|Door.001Action.001
+  - first:
+      74: 6620559243616947933
+    second: Checkpoint|DoorAction
+  - first:
+      74: -629878040084231401
+    second: Door|CheckpointAction
+  - first:
+      74: -2370441712310602324
+    second: Door|Door.001Action
+  - first:
+      74: -1802715165299721897
+    second: Door|Door.001Action.001
+  - first:
+      74: -4379138895778929148
+    second: Door|DoorAction
+  - first:
+      74: -6941865534989745348
+    second: Door.001|CheckpointAction
+  - first:
+      74: -5873188017603868455
+    second: Door.001|Door.001Action
+  - first:
+      74: -221791247211897692
+    second: Door.001|Door.001Action.001
+  - first:
+      74: 2070819816499417587
+    second: Door.001|DoorAction
+  - first:
+      74: -623603649343465320
+    second: Open
+  - first:
+      74: 1657863913638022248
+    second: Idle close
+  - first:
+      74: -1609281748187839663
+    second: idle open
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -40,7 +94,94 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Open
+      takeName: Scene
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle close
+      takeName: Scene
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle open
+      takeName: Scene
+      internalID: 0
+      firstFrame: 35
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
