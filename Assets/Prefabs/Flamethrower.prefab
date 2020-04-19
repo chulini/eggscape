@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6312911375778831086}
-  - component: {fileID: 1102992361669189419}
   m_Layer: 2
   m_Name: Flamethrower
   m_TagString: Untagged
@@ -32,31 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1102992361669189419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5185721917148590884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb3b6e96ff5e084a8a45f331661f7d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  diskSpeedX:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 0}
-  diskSpeedY:
-    _useConstant: 1
-    _constantValue: 50
-    _variable: {fileID: 0}
-  diskSpeedZ:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 0}
-  _rigidbody: {fileID: 0}
 --- !u!1001 &1054922218362366262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,11 +47,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.y
       value: 6.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457011386081709793, guid: a26efbf62947d0f419f970cc02160026,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6223240985086625314, guid: a26efbf62947d0f419f970cc02160026,
         type: 3}
