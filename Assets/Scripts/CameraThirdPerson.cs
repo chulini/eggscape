@@ -105,17 +105,17 @@ namespace Camera
             }
         }
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawSphere(desiredPosition, 0.5f);
-            if (_cameraParentFollowingPlayer == null)
-                return;
-            
-            Vector3 camPos = _cameraParentFollowingPlayer.position -
-                              _cameraParentFollowingPlayer.forward * _currentBackwardsDistance;
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(camPos, 0.4f);
-        }
+        // private void OnDrawGizmos()
+        // {
+        //     Gizmos.color = Color.green;
+        //     Gizmos.DrawSphere(desiredPosition, 0.5f);
+        //     if (_cameraParentFollowingPlayer == null)
+        //         return;
+        //     
+        //     Vector3 camPos = _cameraParentFollowingPlayer.position -
+        //                       _cameraParentFollowingPlayer.forward * _currentBackwardsDistance;
+        //     Gizmos.color = Color.yellow;
+        //     Gizmos.DrawSphere(camPos, 0.4f);
+        // }
     }
 }

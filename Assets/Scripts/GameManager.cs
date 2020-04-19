@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SetSpawnPoint();
-        _playerReference.Value = Instantiate(_playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        _eggHealth.Value = 0;
+        _playerReference.Value = Instantiate(_playerPrefab, _levelStartPoint.transform.position, Quaternion.identity);
+        _eggHealth.Value = 100;
     }
 
     private void OnDestroy()
