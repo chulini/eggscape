@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private GameEvent playerDied;
     [SerializeField] private AudioSource effectsAudioSource;
     [SerializeField] private AudioSource bgMusicAudioSource;
-    [SerializeField] private AudioClip[] crackSounds;
+    [SerializeField] private AudioClip splatClip;
 #pragma warning restore 0649
     private void OnEnable()
     {
@@ -30,6 +30,6 @@ public class AudioManager : MonoBehaviour
 
     private void PlayerDiedHandler()
     {
-        effectsAudioSource.PlayOneShot(crackSounds[Random.Range(0,crackSounds.Length)]);   
+        effectsAudioSource.PlayOneShot(splatClip);   
     }
 }
