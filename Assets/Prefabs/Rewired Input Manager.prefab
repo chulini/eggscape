@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6119352072228956424}
   - component: {fileID: 5602547664963137288}
+  - component: {fileID: 2185864411747540846}
   m_Layer: 0
   m_Name: Rewired Input Manager
   m_TagString: Untagged
@@ -672,3 +673,19 @@ MonoBehaviour:
     controllerMapEnablerSetIdCounter: 0
   _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
     type: 2}
+--- !u!114 &2185864411747540846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529560433652261155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5b8a98f9960b24f9db7f08fc965abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xAxisMove: {fileID: 11400000, guid: c573fb3ea2957564ea2b8057d9d6adf4, type: 2}
+  _yAxisMove: {fileID: 11400000, guid: 91962f6c5a197b64c98bfcaecb8fe0a0, type: 2}
+  _xAxisView: {fileID: 11400000, guid: ba797403c84f5d7478a5355b4534cbc0, type: 2}
+  _yAxisView: {fileID: 11400000, guid: 65675a885c84cd54199895a2ce629978, type: 2}
