@@ -9,13 +9,23 @@ using Cursor = UnityEngine.Cursor;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance; 
     [SerializeField] private BoolGameEvent _onPauseEvent;
     [SerializeField] private GameObject startMenuContainer;
     [SerializeField] private GameObject pauseMenuContainer;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);   
+        }
+        else
+        {
+            DestroyImmediate(gameObject);
+        }
+        
     }
 
     private void Start()
@@ -28,7 +38,7 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         _onPauseEvent.AddListener(PauseEventHandler);
-        gameObject.transform.SetAsLastSibling();
+        
     }
 
     private void OnDisable()

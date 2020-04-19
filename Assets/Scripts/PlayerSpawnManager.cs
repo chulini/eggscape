@@ -49,6 +49,9 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private void RespawnPlayer()
     {
+        if (_playerReference.Value != null)
+            return;
+        
         SpawnPlayer();
         _eggHealth.Value = 100;
         Time.timeScale = 1f;
