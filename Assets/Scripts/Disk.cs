@@ -21,16 +21,8 @@ public class Disk : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (diskSpeedX != null && diskSpeedX.Value != 0) {
-            _rigidbody.MoveRotation(Quaternion.Euler(_rigidbody.rotation.eulerAngles.x + diskSpeedX.Value * Time.fixedDeltaTime, 0, 0));
-        }
-
-        if (diskSpeedY != null && diskSpeedY.Value != 0) {
-            _rigidbody.MoveRotation(Quaternion.Euler(0, _rigidbody.rotation.eulerAngles.y + diskSpeedY.Value * Time.fixedDeltaTime, 0));
-        }
-
-        if (diskSpeedZ != null && diskSpeedZ.Value != 0) {
-            _rigidbody.MoveRotation(Quaternion.Euler(0, 0, _rigidbody.rotation.eulerAngles.z + diskSpeedZ.Value * Time.fixedDeltaTime));
-        }
+        _rigidbody.MoveRotation(Quaternion.Euler(_rigidbody.rotation.eulerAngles.x + diskSpeedX.Value * Time.fixedDeltaTime, 
+            _rigidbody.rotation.eulerAngles.y + diskSpeedY.Value * Time.fixedDeltaTime, 
+            _rigidbody.rotation.eulerAngles.z + diskSpeedZ.Value * Time.fixedDeltaTime));
     }
 }
