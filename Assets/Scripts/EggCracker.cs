@@ -1,30 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using ScriptableObjectArchitecture;
+using Random = UnityEngine.Random;
 
 public class EggCracker : MonoBehaviour
 {
     [SerializeField] private FloatReference _eggHealth;
     [SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private AudioClip[] cracks;
-    void Start()
+    private static readonly int _cracks = Shader.PropertyToID("_cracks");
+
+    private void Start()
     {
         // _material = _meshRenderer.sharedMaterial;
         _eggHealth.AddListener(UpdateCracks);
         UpdateCracks();
     }
 
+    private void OnDisable()
+    {
+        _eggHealth.RemoveListener(UpdateCracks);
+    }
 
-    private void UpdateCracks() {
-        float value = Mathf.Lerp(0, 2, _eggHealth.Value / 100f);
+
+    private void UpdateCracks()
+    {
+        var value = Mathf.Lerp(0, 2, _eggHealth.Value / 100f);
         print("Setting value: " + value);
-        if(_meshRenderer != null)
-            _meshRenderer.sharedMaterial.SetFloat("_cracks", value);
+        if (_meshRenderer != null)
+            _meshRenderer.sharedMaterial.SetFloat(_cracks, value);
 
         if (_eggHealth.Value < 100)
         {
-            GetComponent<AudioSource>().PlayOneShot(cracks[Random.Range(0,cracks.Length)]);
+            GetComponent<AudioSource>().PlayOneShot(cracks[Random.Range(0, cracks.Length)]);
         }
     }
 }

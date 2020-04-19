@@ -1,4 +1,5 @@
-﻿using ScriptableObjectArchitecture;
+﻿using System;
+using ScriptableObjectArchitecture;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -6,12 +7,23 @@ public class DamageComponent : MonoBehaviour
 {
     [SerializeField] private Vector2 _damageRange = new Vector2(1, 10);
     [SerializeField] private float _damageInterval = 1f;
-    
+
     [SerializeField] private FloatReference _eggHealth;
+    [SerializeField] private GameEvent _onPlayerDied;
     [SerializeField] private GameObjectReference _player;
 
     private float _timeElapsed;
     private bool _takingDamage;
+
+    private void OnEnable()
+    {
+        _onPlayerDied.AddListener(OnPlayerDied);
+    }
+
+    private void OnDisable()
+    {
+        _onPlayerDied.RemoveListener(OnPlayerDied);
+    }
 
     private void Awake()
     {
@@ -20,16 +32,21 @@ public class DamageComponent : MonoBehaviour
 
     private void Update()
     {
-        if (!_takingDamage) {
+        if (!_takingDamage)
+        {
             _timeElapsed = _damageInterval;
-        } else {
+        }
+        else
+        {
             TakeDamage();
         }
     }
 
-    private void TakeDamage() {
+    private void TakeDamage()
+    {
         _timeElapsed += Time.deltaTime;
-        if (_timeElapsed > _damageInterval) {
+        if (_timeElapsed > _damageInterval)
+        {
             _timeElapsed = 0;
             _eggHealth.Value -= CalculateDamage();
         }
@@ -44,7 +61,7 @@ public class DamageComponent : MonoBehaviour
 
         _takingDamage = true;
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
         _timeElapsed = _damageInterval;
@@ -54,5 +71,10 @@ public class DamageComponent : MonoBehaviour
     private float CalculateDamage()
     {
         return Random.Range(_damageRange.x, _damageRange.y);
+    }
+
+    private void OnPlayerDied()
+    {
+        _takingDamage = false;
     }
 }
