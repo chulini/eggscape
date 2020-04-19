@@ -43,10 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d179e04e04ed4f849f10b3be9779f94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eggHealth:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
+  _eggHealth: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
   _activeCheckpoint: {fileID: 11400000, guid: 8b3800a9f1ccb8b4da3a9d54fdd27afc, type: 2}
   _playerReference:
     _useConstant: 0
