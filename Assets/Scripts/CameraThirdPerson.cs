@@ -88,6 +88,14 @@ namespace Camera
         private Vector3 desiredPosition;
         void Update()
         {
+            if (_playerTransform == null)
+                return;
+            _cameraParentFollowingPlayer.position = _playerTransform.position;
+            _transform.localPosition = new Vector3(0,0,-_currentBackwardsDistance);
+            _transform.LookAt(_playerTransform.position);
+            
+            
+            
             _currentBackwardsDistance = Mathf.Lerp(_currentBackwardsDistance, _targetBackwardsDistance, Time.deltaTime*smoothness);
             _yaw += _rotationSpeed.Value.x * _xAxisView.Value;
             _pitch -= _rotationSpeed.Value.y * _yAxisView.Value;
