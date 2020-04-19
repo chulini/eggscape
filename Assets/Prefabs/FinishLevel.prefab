@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef3512160a0b2e41ac8fb21be05933c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: 
+  nextSceneName: 01_Rene_VentilationShaft
   playerDied: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
 --- !u!54 &8695221298867573185
 Rigidbody:
