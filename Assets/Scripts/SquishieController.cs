@@ -6,6 +6,8 @@ using ScriptableObjectArchitecture;
 
 public class SquishieController : MonoBehaviour
 {
+    [SerializeField] private AudioClip preparingClip;
+    [SerializeField] private AudioClip hitClip;
     [SerializeField] private FloatGameEvent cameraShakeEvent;
     [SerializeField] private GameObjectReference playerGameObject;
     [SerializeField] private float windUpAmount;
@@ -31,8 +33,13 @@ public class SquishieController : MonoBehaviour
 
     private Vector3 _spawnPosition;
     // [SerializeField] private BoxCollider triggerBoxCollider;
+    private AudioSource _audioSource;
 
-    
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         _spawnPosition = transform.position;
@@ -100,18 +107,23 @@ public class SquishieController : MonoBehaviour
 
     private void SquishDown() {
         // print("SquishDown");
+        _audioSource.PlayOneShot(preparingClip);
         squishingDown = true;
         currVelocity = -transform.up * squishDownSpeed;
     }
 
     private void SquishDownRest()
     {
-        float distance = (playerGameObject.Value.transform.position - transform.position).magnitude;
-        if (distance < 4)
+        if (playerGameObject.Value != null)
         {
-            cameraShakeEvent.Raise(Mathf.Lerp(.3f,.0f, ((distance-1f)/4f))); 
+            float distance = (playerGameObject.Value.transform.position - transform.position).magnitude;
+            if (distance < 4)
+            {
+                cameraShakeEvent.Raise(Mathf.Lerp(.3f, .0f, ((distance - 1f) / 4f)));
+                _audioSource.PlayOneShot(hitClip);
+            }
         }
-        
+
         Invoke("SquishedUp", squishedDownRestTime);
     }
 
