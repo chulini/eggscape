@@ -182,9 +182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDied: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
+  _onPlayerHealed: {fileID: 11400000, guid: ce75905272ee10245b75c9972a54826f, type: 2}
   effectsAudioSource: {fileID: 2224521339927549318}
   bgMusicAudioSource: {fileID: 8962302271012013738}
   splatClip: {fileID: 8300000, guid: cc14d2594d9af7f468f1aaf5efad93dd, type: 3}
+  _healClip: {fileID: 8300000, guid: cc14d2594d9af7f468f1aaf5efad93dd, type: 3}
 --- !u!82 &8962302271012013738
 AudioSource:
   m_ObjectHideFlags: 0
