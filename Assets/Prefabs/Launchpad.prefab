@@ -81,14 +81,11 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: 9b5ac4c628c074942a723edc49fc404f, type: 2}
-  impulseUp:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: a4a91dc3024ea0f40914e6eceb498445, type: 2}
-  impulseForward:
-    _useConstant: 0
-    _constantValue: 0
-    _variable: {fileID: 11400000, guid: f2d9b22f633d99342bdf44ef5102b55f, type: 2}
+  impulseUp: 5
+  impulseForward: 5
+  bulletTimeDuration: 1.5
+  bulletTimeTimeScale: 0.1
+  bulletTimeTransitionDuration: 1
 --- !u!1001 &332092173440712731
 PrefabInstance:
   m_ObjectHideFlags: 0
