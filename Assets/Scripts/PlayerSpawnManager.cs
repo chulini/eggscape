@@ -1,4 +1,3 @@
-using System.Collections;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -12,15 +11,7 @@ public class PlayerSpawnManager : MonoBehaviour
     [SerializeField] private GameEvent _onRespawnPlayer;
     [SerializeField] private FloatGameEvent _onScreenFade;
     [SerializeField] private float _respawnTime = 1f;
-
-    private Rigidbody _playerRigidBody;
-    private Coroutine _dieCoroutine;
-    private Coroutine _spawnCoroutine;
-
-    private void Start()
-    {
-        _playerRigidBody = _playerReference.Value.GetComponent<Rigidbody>();
-    }
+    [SerializeField] private GameObject _playerPrefab;
 
     private void OnEnable()
     {
@@ -34,47 +25,38 @@ public class PlayerSpawnManager : MonoBehaviour
         _onRespawnPlayer.RemoveListener(RespawnPlayer);
     }
 
+    private void DelayedSpawnCall()
+    {
+        _onRespawnPlayer.Raise();
+    }
+
+    private void RunDeathTransitions()
+    {
+        _onScreenFade.Raise(1f);
+        Invoke(nameof(DelayedSpawnCall), 1f);
+    }
+
     private void OnPlayerDied()
     {
-        Time.timeScale = 0.25f;
-        _onScreenFade.Raise(1f);
+        Time.timeScale = 0.5f;
+        Invoke(nameof(RunDeathTransitions), 1f);
+    }
 
-        if (null != _dieCoroutine)
-        {
-            StopCoroutine(_dieCoroutine);
-        }
-
-        _dieCoroutine = StartCoroutine(DieCoroutine());
+    private void SpawnPlayer()
+    {
+        _playerReference.Value = Instantiate(_playerPrefab, _activeCheckpoint.Value.transform.position, Quaternion.identity);
     }
 
     private void RespawnPlayer()
     {
+        SpawnPlayer();
         _eggHealth.Value = 100;
-        _playerRigidBody.velocity = Vector3.zero;
-        _playerRigidBody.angularVelocity = Vector3.zero;
-        _playerReference.Value.transform.position = _activeCheckpoint.Value.transform.position;
-        _playerReference.Value.transform.rotation = Quaternion.identity;
-        
-        if (null != _spawnCoroutine)
-        {
-            StopCoroutine(_spawnCoroutine);
-        }
-
-        _spawnCoroutine = StartCoroutine(SpawnCoroutine());
-    }
-
-    private IEnumerator DieCoroutine()
-    {
-        yield return new WaitForSecondsRealtime(_respawnTime);
-        
-        _onRespawnPlayer.Raise();
-    }
-
-    private IEnumerator SpawnCoroutine()
-    {
-        yield return new WaitForSecondsRealtime(_respawnTime);
-
         Time.timeScale = 1f;
+        Invoke(nameof(RunSpawnTransitions), _respawnTime);
+    }
+
+    private void RunSpawnTransitions()
+    {
         _onScreenFade.Raise(0f);
         _playerSpawnedEvent.Raise();
     }

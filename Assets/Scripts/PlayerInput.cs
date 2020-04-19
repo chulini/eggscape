@@ -38,6 +38,11 @@ public class PlayerInput : MonoBehaviour
 
         if (_internalPauseState)
         {
+            _yAxisMove.Value = 0;
+            _xAxisMove.Value = 0;
+            _xAxisView.Value = 0;
+            _yAxisView.Value = 0;
+            
             return;
         }
 

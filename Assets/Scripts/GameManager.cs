@@ -6,11 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CheckpointComponentVariable _activeCheckpoint;
-    [SerializeField] private GameObjectReference _playerReference;
-    [SerializeField] private FloatReference _eggHealth;
-    [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private CheckpointComponent _levelStartPoint;
-    [SerializeField] private GameEvent _playerDiedEvent;
     [SerializeField] private GameEvent _onRespawnPlayer;
     [SerializeField] private BoolGameEvent _onPausedEvent;
     [SerializeField] private FloatGameEvent _onScreenFade;
@@ -25,7 +21,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SetSpawnPoint();
-        _playerReference.Value = Instantiate(_playerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         _fadeImage = _screenFade.GetComponentInChildren<Image>();
     }
 
@@ -43,14 +38,12 @@ public class GameManager : MonoBehaviour
     
     private void OnEnable()
     {
-        _eggHealth.AddListener(OnHealthChange);
         _onScreenFade.AddListener(OnFade);
         _onPausedEvent.AddListener(OnPause);
     }
 
     private void OnDisable() 
     {
-        _eggHealth.RemoveListener(OnHealthChange);
         _onScreenFade.RemoveListener(OnFade);
         _onPausedEvent.RemoveListener(OnPause);
     }
@@ -58,16 +51,6 @@ public class GameManager : MonoBehaviour
     private void SetSpawnPoint()
     {
         _activeCheckpoint.Value = _levelStartPoint;
-    }
-
-    private void OnHealthChange()
-    {
-        if (_eggHealth.Value > float.Epsilon)
-        {
-            return;
-        }
-        
-        _playerDiedEvent.Raise();
     }
 
     private void OnFade(float targetOpacity)

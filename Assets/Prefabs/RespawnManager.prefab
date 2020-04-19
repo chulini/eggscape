@@ -48,10 +48,12 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {fileID: 0}
     _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
-  _playerDiedEvent: {fileID: 11400000, guid: a39317045802cf1439406cb23e04707a, type: 2}
+  _playerDiedEvent: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
   _eggHealth: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
   _playerSpawnedEvent: {fileID: 11400000, guid: adb372bba713a6845b52d1c09a581f8f,
     type: 2}
   _onRespawnPlayer: {fileID: 11400000, guid: 6a61ef28937ed6c4991f17f939e1958c, type: 2}
   _onScreenFade: {fileID: 11400000, guid: 24408aa0925f8af47b5ed65c051b26c0, type: 2}
   _respawnTime: 1
+  _playerPrefab: {fileID: 376057604752817231, guid: 1f6af2b0d70a0274f90128b35d326a22,
+    type: 3}
