@@ -21,5 +21,6 @@ public class EggCracker : MonoBehaviour
         print("Setting value: " + value);
         if(_meshRenderer != null)
             _meshRenderer.sharedMaterial.SetFloat("_cracks", value);
+
     }
 }
