@@ -14,12 +14,12 @@ public class DieAfterLieStill : MonoBehaviour
 
     void Update()
     {
-        if (_rb.velocity.magnitude > 0.05) {
+        if (_rb.velocity.magnitude > 0.1) {
             lastMoving = Time.time;
         }
-        print(lastMoving);
+        // print(lastMoving);
         if (lastMoving + destroyAfterStillForXSeconds < Time.time) {
-            print("DED!");
+            // print("DED!");
             Destroy(gameObject);
         }
     }

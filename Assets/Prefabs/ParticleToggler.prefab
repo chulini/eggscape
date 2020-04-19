@@ -115,12 +115,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageRange: {x: 10, y: 20}
-  _damageInterval: 0.2
+  _damageInterval: 0.1
   _eggHealth:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
-  _onPlayerDied: {fileID: 0}
+  _onPlayerDied: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
   _player:
     _useConstant: 0
     _constantValue: {fileID: 0}
@@ -324,7 +324,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.11
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -377,7 +377,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 50
       minScalar: 5
       maxCurve:
         serializedVersion: 2
