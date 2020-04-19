@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using ScriptableObjectArchitecture;
+using Random = UnityEngine.Random;
 
 public class EggCracker : MonoBehaviour
 {
@@ -13,6 +15,11 @@ public class EggCracker : MonoBehaviour
         // _material = _meshRenderer.sharedMaterial;
         _eggHealth.AddListener(UpdateCracks);
         UpdateCracks();
+    }
+
+    private void OnDestroy()
+    {
+        _eggHealth.RemoveListener(UpdateCracks);
     }
 
 

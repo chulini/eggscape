@@ -1,10 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Scenes/Rene_VentilationShaft.meta
-guid: 8a5057c9fb09f0f4084a836487ca96f6
+guid: bb95b49e35b2c044d903917f22525d91
+>>>>>>> 3879579476bc08f0022ec06b51988f71ea6d9717
 folderAsset: yes
-=======
 guid: c0dac9cae0b5df448ad75a906a0d26a2
->>>>>>> d5da974bbff2844592e815feb7c6958ff5ec7081:Assets/Scenes/DeathAnimation.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

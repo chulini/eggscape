@@ -121,9 +121,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _activeCheckpoint: {fileID: 11400000, guid: 8b3800a9f1ccb8b4da3a9d54fdd27afc, type: 2}
   _levelStartPoint: {fileID: 0}
+  _eggHealth: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
   _onRespawnPlayer: {fileID: 11400000, guid: 6a61ef28937ed6c4991f17f939e1958c, type: 2}
   _onPausedEvent: {fileID: 11400000, guid: bf6f600c02c7eed4bac8ba6d80a10c40, type: 2}
   _onScreenFade: {fileID: 11400000, guid: 24408aa0925f8af47b5ed65c051b26c0, type: 2}
+  _onPlayerHealed: {fileID: 11400000, guid: ce75905272ee10245b75c9972a54826f, type: 2}
   _screenFade: {fileID: 5698221572506296423}
   _fadeChangeStep: 0.05
   _fadeChangeInterval: 0.05
