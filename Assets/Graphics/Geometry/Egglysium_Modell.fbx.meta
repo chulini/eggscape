@@ -32,6 +32,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Sun
+    second: {fileID: 2100000, guid: d7564aff6ac84d14596050a4f6520080, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Tree
     second: {fileID: 2100000, guid: fbbc3bac22cfabe42bcad63729b6e7aa, type: 2}
   materials:
