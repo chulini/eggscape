@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7438417951765721446}
+  - component: {fileID: 4253771447190395901}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4253771447190395901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7438417951765721447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.91, y: 16.5, z: 4.81}
+  m_Center: {x: 0, y: 5.6, z: -0.34}
 --- !u!1001 &7076848543080580136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46,12 +60,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6734b47ec191e144ca0075accca916dc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6734b47ec191e144ca0075accca916dc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6734b47ec191e144ca0075accca916dc,
         type: 3}
@@ -113,6 +127,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: spaceship_window
       objectReference: {fileID: 0}
+    - target: {fileID: 3376065158848101002, guid: 6734b47ec191e144ca0075accca916dc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d6bf3e1ab2c84649811bb3b6f6b4fee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6734b47ec191e144ca0075accca916dc, type: 3}
 --- !u!4 &2831832397460713266 stripped

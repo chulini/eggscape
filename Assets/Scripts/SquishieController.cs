@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
 public class SquishieController : MonoBehaviour
 {
+    [SerializeField] private FloatGameEvent cameraShakeEvent;
+    [SerializeField] private GameObjectReference playerGameObject;
     [SerializeField] private float windUpAmount;
     [SerializeField] private float windUpTime;
     [SerializeField] private float windUpRestTime;
@@ -29,6 +32,7 @@ public class SquishieController : MonoBehaviour
     private Vector3 _spawnPosition;
     // [SerializeField] private BoxCollider triggerBoxCollider;
 
+    
     private void Start()
     {
         _spawnPosition = transform.position;
@@ -100,7 +104,14 @@ public class SquishieController : MonoBehaviour
         currVelocity = -transform.up * squishDownSpeed;
     }
 
-    private void SquishDownRest() {
+    private void SquishDownRest()
+    {
+        float distance = (playerGameObject.Value.transform.position - transform.position).magnitude;
+        if (distance < 4)
+        {
+            cameraShakeEvent.Raise(Mathf.Lerp(.3f,.0f, ((distance-1f)/4f))); 
+        }
+        
         Invoke("SquishedUp", squishedDownRestTime);
     }
 
