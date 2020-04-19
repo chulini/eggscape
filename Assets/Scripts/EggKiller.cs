@@ -7,6 +7,7 @@ using UnityEngine;
 public class EggKiller : MonoBehaviour
 {
 #pragma warning disable 0649
+    [SerializeField] private FloatGameEvent cameraShakeEvent;
     [SerializeField] private FloatReference playerHealth;
     [SerializeField] private GameObject brokenEggPrefab;
     [SerializeField] private GameEvent playerDied;
@@ -27,6 +28,7 @@ public class EggKiller : MonoBehaviour
             Instantiate(brokenEggPrefab, transform.position, transform.rotation);       
             DestroyImmediate(gameObject);
             playerDied.Raise();
+            cameraShakeEvent.Raise(3f);
         }
     }
 }

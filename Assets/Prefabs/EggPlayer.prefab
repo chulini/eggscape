@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f82f8fac63f654099317e59b5c89f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShakeEvent: {fileID: 11400000, guid: 86db3de22c4436b4fb1f61f7ed9db836, type: 2}
   playerHealth:
     _useConstant: 0
     _constantValue: 0

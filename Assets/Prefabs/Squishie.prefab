@@ -101,6 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a0dc6434766d94795d68a3c305f70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShakeEvent: {fileID: 11400000, guid: 86db3de22c4436b4fb1f61f7ed9db836, type: 2}
+  playerGameObject:
+    _useConstant: 0
+    _constantValue: {fileID: 0}
+    _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
   windUpAmount: 1
   windUpTime: 0.5
   windUpRestTime: 0.1
