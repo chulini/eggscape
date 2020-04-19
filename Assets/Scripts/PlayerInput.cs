@@ -29,6 +29,7 @@ public class PlayerInput : MonoBehaviour
     {
         player = ReInput.players.GetPlayer(playerId);
         _internalPauseState = true;
+        // _onPauseEvent.Raise(false);
         _onPauseEvent.Raise(true);
     }
 
