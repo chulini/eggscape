@@ -21,11 +21,15 @@ namespace Camera
         [SerializeField] private GameObjectReference _playerGameObjectSO;
         [SerializeField] private FloatReference _distanceFromPlayerBackwards;
         [SerializeField] private Vector2Reference _rotationSpeed;
-        [SerializeField] private float maxPitch;
+        [SerializeField] private float _maxPitch;
+        [SerializeField] private float _collisionMargin;
+        [SerializeField] private float smoothness;
 #pragma warning restore 0649
         private Transform _transform;
         private Transform _playerTransformCache;
         private Transform _cameraParentFollowingPlayer;
+        private float _currentBackwardsDistance;
+        private float _targetBackwardsDistance;
         Transform _playerTransform
         {
             get
@@ -51,6 +55,7 @@ namespace Camera
         
         private void OnEnable()
         {
+            // _playerGameObjectSO.AddListener(PlayerGameObjectChagned);
             cameraGameObject.Value = gameObject;
             // Create parent game object following player
             GameObject parentGameObject = new GameObject("Camera Parent");
@@ -58,34 +63,86 @@ namespace Camera
             _transform.SetParent(_cameraParentFollowingPlayer);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Destroy(GetComponent<AudioListener>());
+            _cameraParentFollowingPlayer.gameObject.AddComponent<AudioListener>();
+
+
         }
 
         private void OnDisable()
         {
+            // _playerGameObjectSO.RemoveListener(PlayerGameObjectChagned);
             cameraGameObject.Value = null;
             // Unparent camera and destroy parent game object following player
             _transform.SetParent(null);
             Destroy(_cameraParentFollowingPlayer.gameObject);
             Cursor.visible = true;
+            
         }
 
-    
+        // private void PlayerGameObjectChagned()
+        // {
+        //     if (_playerGameObjectSO.Value != null)
+        //     {
+        //         DestroyImmediate(GetComponent<AudioListener>());
+        //         _playerGameObjectSO.Value.AddComponent<AudioListener>();
+        //     }
+        //     else
+        //     {
+        //         gameObject.AddComponent<AudioListener>();
+        //     }
+        // }
+
 
         private void FixedUpdate()
         {
+            if (_playerTransform == null)
+                return;
             _cameraParentFollowingPlayer.position = _playerTransform.position;
-            _transform.localPosition = new Vector3(0,0,-_distanceFromPlayerBackwards.Value);
-            _transform.LookAt(_playerTransform.position + Vector3.up);
+            
+            _transform.localPosition = new Vector3(0,0,-_currentBackwardsDistance);
+            _transform.LookAt(_playerTransform.position);
         }
 
+        private Vector3 desiredPosition;
         void Update()
         {
-            //TODO move Input.GetAxis to input manager and listen here scriptable objects
+            if (_playerTransform == null)
+                return;
+            _cameraParentFollowingPlayer.position = _playerTransform.position;
+            _transform.localPosition = new Vector3(0,0,-_currentBackwardsDistance);
+            _transform.LookAt(_playerTransform.position);
+            
+            
+            
+            _currentBackwardsDistance = Mathf.Lerp(_currentBackwardsDistance, _targetBackwardsDistance, Time.deltaTime*smoothness);
             _yaw += _rotationSpeed.Value.x * _xAxisView.Value;
             _pitch -= _rotationSpeed.Value.y * _yAxisView.Value;
-            _pitch = _pitch.Clamp(-maxPitch, maxPitch);
+            _pitch = _pitch.Clamp(-_maxPitch, _maxPitch);
             _cameraParentFollowingPlayer.eulerAngles = new Vector3(_pitch, _yaw, 0);
+            desiredPosition = _cameraParentFollowingPlayer.position -
+                                      _cameraParentFollowingPlayer.forward * _distanceFromPlayerBackwards.Value;
+            if (Physics.Linecast(_cameraParentFollowingPlayer.position, desiredPosition, out RaycastHit hit))
+            {
+                _targetBackwardsDistance = Mathf.Clamp((hit.distance * _collisionMargin), 0.8f, _distanceFromPlayerBackwards.Value);
+            }
+            else
+            {
+                _targetBackwardsDistance =_distanceFromPlayerBackwards.Value;
+            }
         }
 
+        // private void OnDrawGizmos()
+        // {
+        //     Gizmos.color = Color.green;
+        //     Gizmos.DrawSphere(desiredPosition, 0.5f);
+        //     if (_cameraParentFollowingPlayer == null)
+        //         return;
+        //     
+        //     Vector3 camPos = _cameraParentFollowingPlayer.position -
+        //                       _cameraParentFollowingPlayer.forward * _currentBackwardsDistance;
+        //     Gizmos.color = Color.yellow;
+        //     Gizmos.DrawSphere(camPos, 0.4f);
+        // }
     }
 }

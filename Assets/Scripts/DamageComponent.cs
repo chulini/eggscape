@@ -20,22 +20,19 @@ public class DamageComponent : MonoBehaviour
 
     private void Update()
     {
-        if (!_takingDamage)
-        {
+        if (!_takingDamage) {
             _timeElapsed = _damageInterval;
-            
-            return;
+        } else {
+            TakeDamage();
         }
-        
+    }
+
+    private void TakeDamage() {
         _timeElapsed += Time.deltaTime;
-
-        if (_timeElapsed < _damageInterval)
-        {
-            return;
+        if (_timeElapsed > _damageInterval) {
+            _timeElapsed = 0;
+            _eggHealth.Value -= CalculateDamage();
         }
-
-        _timeElapsed = 0;
-        _eggHealth.Value -= CalculateDamage();
     }
 
     private void OnTriggerStay(Collider other)

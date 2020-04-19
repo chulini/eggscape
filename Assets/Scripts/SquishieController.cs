@@ -1,10 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ScriptableObjectArchitecture;
 
 public class SquishieController : MonoBehaviour
 {
+    [SerializeField] private AudioClip preparingClip;
+    [SerializeField] private AudioClip hitClip;
+    [SerializeField] private FloatGameEvent cameraShakeEvent;
+    [SerializeField] private GameObjectReference playerGameObject;
     [SerializeField] private float windUpAmount;
     [SerializeField] private float windUpTime;
     [SerializeField] private float windUpRestTime;
@@ -28,6 +33,12 @@ public class SquishieController : MonoBehaviour
 
     private Vector3 _spawnPosition;
     // [SerializeField] private BoxCollider triggerBoxCollider;
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -75,7 +86,7 @@ public class SquishieController : MonoBehaviour
 
         int realCollisions = 0;
         foreach (Collider c in collisions) {
-            if (GetParentMostGameObject(c.gameObject) != gameObject) {
+            if (c!= null && GetParentMostGameObject(c.gameObject) != gameObject) {
                 realCollisions += 1;
                 if (c.gameObject == playerObject.Value) {
                     playerHealth.Value -= 9999f;
@@ -96,11 +107,26 @@ public class SquishieController : MonoBehaviour
 
     private void SquishDown() {
         // print("SquishDown");
+        _audioSource.clip = preparingClip; 
+        _audioSource.Play();
         squishingDown = true;
         currVelocity = -transform.up * squishDownSpeed;
     }
 
-    private void SquishDownRest() {
+    private void SquishDownRest()
+    {
+        if (playerGameObject.Value != null)
+        {
+            float distance = (playerGameObject.Value.transform.position - transform.position).magnitude;
+            if (distance < 4)
+            {
+                cameraShakeEvent.Raise(Mathf.Lerp(.3f, .0f, ((distance - 1f) / 4f)));
+                _audioSource.Stop();
+                _audioSource.clip = hitClip; 
+                _audioSource.Play();
+            }
+        }
+
         Invoke("SquishedUp", squishedDownRestTime);
     }
 

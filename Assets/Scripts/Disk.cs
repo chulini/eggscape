@@ -12,7 +12,7 @@ public class Disk : MonoBehaviour
     [SerializeField] private FloatReference diskSpeedZ;
 
 #pragma warning restore 0649
-    private Rigidbody _rigidbody;
+    [SerializeField] private Rigidbody _rigidbody;
 
     private void Awake()
     {
@@ -21,13 +21,12 @@ public class Disk : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (diskSpeedX != null)
-            _rigidbody.MoveRotation(Quaternion.Euler(_rigidbody.rotation.eulerAngles.x + diskSpeedX.Value * Time.fixedDeltaTime, 0, 0));
-
-        if (diskSpeedY != null)
-            _rigidbody.MoveRotation(Quaternion.Euler(0, _rigidbody.rotation.eulerAngles.y + diskSpeedY.Value * Time.fixedDeltaTime, 0));
-
-        if (diskSpeedZ != null)
-            _rigidbody.MoveRotation(Quaternion.Euler(0, 0, _rigidbody.rotation.eulerAngles.z + diskSpeedZ.Value * Time.fixedDeltaTime));
+        Quaternion rotationBefore = transform.localRotation;
+        transform.Rotate(Vector3.right, Time.fixedDeltaTime*diskSpeedX.Value, Space.Self);
+        transform.Rotate(Vector3.up, Time.fixedDeltaTime*diskSpeedY.Value, Space.Self);
+        transform.Rotate(Vector3.forward, Time.fixedDeltaTime*diskSpeedZ.Value, Space.Self);
+        Quaternion rotationAfter = transform.localRotation;
+        // transform.localRotation = rotationBefore;
+        _rigidbody.MoveRotation(rotationAfter);
     }
 }
