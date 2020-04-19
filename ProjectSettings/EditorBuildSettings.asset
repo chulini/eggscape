@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Final Scenes/01_Rene_VentilationShaft.unity
+    path: Assets/Scenes/Final Scenes/01_Ventilation.unity
     guid: 837bc69124f266d47ab0105bbcc44721
   - enabled: 1
     path: Assets/Scenes/Final Scenes/03_Factory.unity
