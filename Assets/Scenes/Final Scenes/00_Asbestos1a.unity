@@ -316,6 +316,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5288459188842197828, guid: 738c9a5abd9219b478923733ecdbdc5e,
+        type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5288459188842197828, guid: 738c9a5abd9219b478923733ecdbdc5e,
+        type: 3}
+      propertyPath: m_Antialiasing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5288459188842197830, guid: 738c9a5abd9219b478923733ecdbdc5e,
         type: 3}
       propertyPath: m_LocalPosition.x
