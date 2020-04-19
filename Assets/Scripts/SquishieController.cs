@@ -107,7 +107,8 @@ public class SquishieController : MonoBehaviour
 
     private void SquishDown() {
         // print("SquishDown");
-        _audioSource.PlayOneShot(preparingClip);
+        _audioSource.clip = preparingClip; 
+        _audioSource.Play();
         squishingDown = true;
         currVelocity = -transform.up * squishDownSpeed;
     }
@@ -120,7 +121,9 @@ public class SquishieController : MonoBehaviour
             if (distance < 4)
             {
                 cameraShakeEvent.Raise(Mathf.Lerp(.3f, .0f, ((distance - 1f) / 4f)));
-                _audioSource.PlayOneShot(hitClip);
+                _audioSource.Stop();
+                _audioSource.clip = hitClip; 
+                _audioSource.Play();
             }
         }
 

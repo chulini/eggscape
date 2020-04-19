@@ -55,6 +55,7 @@ namespace Camera
         
         private void OnEnable()
         {
+            // _playerGameObjectSO.AddListener(PlayerGameObjectChagned);
             cameraGameObject.Value = gameObject;
             // Create parent game object following player
             GameObject parentGameObject = new GameObject("Camera Parent");
@@ -62,18 +63,36 @@ namespace Camera
             _transform.SetParent(_cameraParentFollowingPlayer);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Destroy(GetComponent<AudioListener>());
+            _cameraParentFollowingPlayer.gameObject.AddComponent<AudioListener>();
+
+
         }
 
         private void OnDisable()
         {
+            // _playerGameObjectSO.RemoveListener(PlayerGameObjectChagned);
             cameraGameObject.Value = null;
             // Unparent camera and destroy parent game object following player
             _transform.SetParent(null);
             Destroy(_cameraParentFollowingPlayer.gameObject);
             Cursor.visible = true;
+            
         }
 
-    
+        // private void PlayerGameObjectChagned()
+        // {
+        //     if (_playerGameObjectSO.Value != null)
+        //     {
+        //         DestroyImmediate(GetComponent<AudioListener>());
+        //         _playerGameObjectSO.Value.AddComponent<AudioListener>();
+        //     }
+        //     else
+        //     {
+        //         gameObject.AddComponent<AudioListener>();
+        //     }
+        // }
+
 
         private void FixedUpdate()
         {
