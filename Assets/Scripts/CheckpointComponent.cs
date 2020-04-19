@@ -1,4 +1,5 @@
 ﻿using ScriptableObjectArchitecture;
+using UnityEditor;
 using UnityEngine;
 
 public class CheckpointComponent : MonoBehaviour
@@ -9,13 +10,18 @@ public class CheckpointComponent : MonoBehaviour
     [SerializeField] private GameObject _checkpointLight;
 
     private Renderer _renderer;
-    private Color _activeColor = new Color(36, 191, 0) * 1.5f;
-    private Color _disabledColor = new Color(191, 4, 0) * 1.5f;
-    private static readonly int _emissionColor = Shader.PropertyToID("_EmissionColor");
+
+    private MaterialPropertyBlock _activeBlock;
+    private MaterialPropertyBlock _inactiveBlock;
 
     private void Awake()
     {
-        _renderer = _checkpointLight.GetComponent<Renderer>();
+        _renderer = _checkpointLight.GetComponent<MeshRenderer>();
+        _activeBlock = new MaterialPropertyBlock();
+        _inactiveBlock = new MaterialPropertyBlock();
+        var emissionColor = Shader.PropertyToID("_EmissionColor");
+        _activeBlock.SetColor(emissionColor, new Color(36 / 255f * 1.5f, 191 / 255f * 1.5f, 0));
+        _inactiveBlock.SetColor(emissionColor, new Color(191 / 255f * 1.5f, 4 / 255f * 1.5f, 0));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,17 +37,22 @@ public class CheckpointComponent : MonoBehaviour
 
     private void ActivateCheckpoint()
     {
-        _renderer.material.SetColor(_emissionColor, _disabledColor);
-        _renderer.material.EnableKeyword("_Emission");
-        _renderer.material.EnableKeyword("_EmissionColor");
+        if (null != _activeCheckpoint.Value)
+        {
+            UpdateCheckpointLight(_activeCheckpoint.Value._renderer, _inactiveBlock);
+        }
         
-        //Set the main Color of the Material to green
-        _renderer.material.shader = Shader.Find("_EmissionColor");
-        _renderer.material.SetColor("_EmissionColor", _disabledColor);
+        UpdateCheckpointLight(_renderer, _activeBlock);
+        _activeCheckpoint.Value = this;
     }
 
     private void HealHandler()
     {
         _onPlayerHealed.Raise(100f);
+    }
+
+    private static void UpdateCheckpointLight(Renderer lightRenderer, MaterialPropertyBlock block)
+    {
+        lightRenderer.SetPropertyBlock(block);
     }
 }
