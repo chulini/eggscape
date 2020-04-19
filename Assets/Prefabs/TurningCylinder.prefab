@@ -73,6 +73,7 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 0}
+  _rigidbody: {fileID: 4171974473670414163}
 --- !u!1001 &4939048186375240942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,6 +135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2745567992595731601, guid: 5d0f6dc3494a0ad479322fe5e7cf7a8a,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 5d0f6dc3494a0ad479322fe5e7cf7a8a,
         type: 3}
