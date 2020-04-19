@@ -58,7 +58,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -147,7 +147,9 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {x: 0, y: 0}
     _variable: {fileID: 11400000, guid: bb1608162cdc7ad48b73108a3300c424, type: 2}
-  maxPitch: 80
+  _maxPitch: 80
+  _collisionMargin: 0.5
+  smoothness: 12
 --- !u!114 &524723826
 MonoBehaviour:
   m_ObjectHideFlags: 0
