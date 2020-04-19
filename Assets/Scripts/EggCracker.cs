@@ -17,8 +17,10 @@ public class EggCracker : MonoBehaviour
 
 
     private void UpdateCracks() {
-        float value = Mathf.Lerp(2, 0, _eggHealth.Value / 100f);
+        float value = Mathf.Lerp(0, 2, _eggHealth.Value / 100f);
         print("Setting value: " + value);
-        _meshRenderer.sharedMaterial.SetFloat("_cracks", value);
+        if(_meshRenderer != null)
+            _meshRenderer.sharedMaterial.SetFloat("_cracks", value);
+
     }
 }

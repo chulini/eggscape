@@ -75,7 +75,7 @@ public class SquishieController : MonoBehaviour
 
         int realCollisions = 0;
         foreach (Collider c in collisions) {
-            if (GetParentMostGameObject(c.gameObject) != gameObject) {
+            if (c!= null && GetParentMostGameObject(c.gameObject) != gameObject) {
                 realCollisions += 1;
                 if (c.gameObject == playerObject.Value) {
                     playerHealth.Value -= 9999f;
