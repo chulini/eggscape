@@ -91,7 +91,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 071ca40e07480d148a8f4a4cffcb47c5, type: 3}
 --- !u!64 &8538998056014542828
@@ -105,7 +105,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 071ca40e07480d148a8f4a4cffcb47c5, type: 3}
 --- !u!1001 &3573215296810507922
@@ -175,10 +175,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.92
       objectReference: {fileID: 0}
+    - target: {fileID: 2029827666402648215, guid: 65e015927e7411c4da34207b847eb436,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4026446138082112563, guid: 65e015927e7411c4da34207b847eb436,
         type: 3}
       propertyPath: m_Name
       value: TurningCylinder2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450476287778744374, guid: 65e015927e7411c4da34207b847eb436,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8749954199010199664, guid: 65e015927e7411c4da34207b847eb436,
         type: 3}
