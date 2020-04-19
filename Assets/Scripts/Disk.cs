@@ -16,21 +16,17 @@ public class Disk : MonoBehaviour
 
     private void Awake()
     {
-        // rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        if (diskSpeedX != null && diskSpeedX.Value != 0) {
-            _rigidbody.MoveRotation(Quaternion.Euler(_rigidbody.rotation.eulerAngles.x + diskSpeedX.Value * Time.fixedDeltaTime, 0, 0));
-        }
-
-        if (diskSpeedY != null && diskSpeedY.Value != 0) {
-            _rigidbody.MoveRotation(Quaternion.Euler(0, _rigidbody.rotation.eulerAngles.y + diskSpeedY.Value * Time.fixedDeltaTime, 0));
-        }
-
-        if (diskSpeedZ != null && diskSpeedZ.Value != 0) {
-            _rigidbody.MoveRotation(Quaternion.Euler(0, 0, _rigidbody.rotation.eulerAngles.z + diskSpeedZ.Value * Time.fixedDeltaTime));
-        }
+        Quaternion rotationBefore = transform.localRotation;
+        transform.Rotate(Vector3.right, Time.fixedDeltaTime*diskSpeedX.Value, Space.Self);
+        transform.Rotate(Vector3.up, Time.fixedDeltaTime*diskSpeedY.Value, Space.Self);
+        transform.Rotate(Vector3.forward, Time.fixedDeltaTime*diskSpeedZ.Value, Space.Self);
+        Quaternion rotationAfter = transform.localRotation;
+        // transform.localRotation = rotationBefore;
+        _rigidbody.MoveRotation(rotationAfter);
     }
 }
