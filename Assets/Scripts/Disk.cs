@@ -28,6 +28,5 @@ public class Disk : MonoBehaviour
         Quaternion rotationAfter = transform.localRotation;
         // transform.localRotation = rotationBefore;
         _rigidbody.MoveRotation(rotationAfter);
-        
     }
 }

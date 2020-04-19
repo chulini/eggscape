@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9074488496614385513}
   - component: {fileID: 3067748300029655491}
   m_Layer: 0
-  m_Name: Disk
+  m_Name: SpinningDisk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,10 +94,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb3b6e96ff5e084a8a45f331661f7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diskSpeed:
+  diskSpeedX:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 0}
+  diskSpeedY:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 0}
+  diskSpeedZ:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 0}
+  _rigidbody: {fileID: 3067748300029655491}
 --- !u!64 &9074488496614385513
 MeshCollider:
   m_ObjectHideFlags: 0
