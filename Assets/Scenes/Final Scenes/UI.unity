@@ -178,7 +178,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Pause
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a0ba714fc564d1549b6a368f00e2a269, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -772514338941440405, guid: a0ba714fc564d1549b6a368f00e2a269,
     type: 2}
   m_fontSharedMaterials: []
@@ -334,9 +334,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a0ba714fc564d1549b6a368f00e2a269, type: 2}
-  m_sharedMaterial: {fileID: -772514338941440405, guid: a0ba714fc564d1549b6a368f00e2a269,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -536,9 +535,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a0ba714fc564d1549b6a368f00e2a269, type: 2}
-  m_sharedMaterial: {fileID: -772514338941440405, guid: a0ba714fc564d1549b6a368f00e2a269,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -821,7 +819,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Resume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a0ba714fc564d1549b6a368f00e2a269, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -772514338941440405, guid: a0ba714fc564d1549b6a368f00e2a269,
     type: 2}
   m_fontSharedMaterials: []
@@ -977,7 +975,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Quit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a0ba714fc564d1549b6a368f00e2a269, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: -772514338941440405, guid: a0ba714fc564d1549b6a368f00e2a269,
     type: 2}
   m_fontSharedMaterials: []
@@ -1232,7 +1230,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 838299982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb3ad1afd3284c4b841c541eae6c849, type: 3}
+  m_Script: {fileID: 11500000, guid: 5858a2219f164c447b708cc2bc7ace45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _onPauseEvent: {fileID: 11400000, guid: bf6f600c02c7eed4bac8ba6d80a10c40, type: 2}
@@ -1471,9 +1469,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: The eggscaping eggsodus of the eggsiled eggs
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a0ba714fc564d1549b6a368f00e2a269, type: 2}
-  m_sharedMaterial: {fileID: -772514338941440405, guid: a0ba714fc564d1549b6a368f00e2a269,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2005,7 +2002,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 838299987}
-        m_MethodName: PlayClicked
+        m_MethodName: ResumeClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
