@@ -108,12 +108,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01663543cbed5864c804683cad328782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageRange: {x: 1, y: 2}
+  _damageRange: {x: 2, y: 5}
   _damageInterval: 0.1
   _eggHealth:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
+  _onPlayerDied: {fileID: 0}
   _player:
     _useConstant: 0
     _constantValue: {fileID: 0}
