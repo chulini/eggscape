@@ -311,6 +311,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 831067448}
     m_Modifications:
+    - target: {fileID: 179526006772144461, guid: 738c9a5abd9219b478923733ecdbdc5e,
+        type: 3}
+      propertyPath: _healClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cc14d2594d9af7f468f1aaf5efad93dd, type: 3}
     - target: {fileID: 5288459188842197819, guid: 738c9a5abd9219b478923733ecdbdc5e,
         type: 3}
       propertyPath: m_Name

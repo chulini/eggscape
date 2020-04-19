@@ -63,3 +63,4 @@ MonoBehaviour:
     _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
   _activeCheckpoint: {fileID: 11400000, guid: 8b3800a9f1ccb8b4da3a9d54fdd27afc, type: 2}
   _checkpointVisual: {fileID: 0}
+  _onPlayerHealed: {fileID: 11400000, guid: ce75905272ee10245b75c9972a54826f, type: 2}
