@@ -114,7 +114,7 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
-  _onPlayerDied: {fileID: 0}
+  _onPlayerDied: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
   _player:
     _useConstant: 0
     _constantValue: {fileID: 0}

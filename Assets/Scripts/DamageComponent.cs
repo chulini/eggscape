@@ -1,5 +1,4 @@
-﻿using System;
-using ScriptableObjectArchitecture;
+﻿using ScriptableObjectArchitecture;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +10,8 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private FloatReference _eggHealth;
     [SerializeField] private GameEvent _onPlayerDied;
     [SerializeField] private GameObjectReference _player;
+    
+    [SerializeField] private DamageType _damageType;
 
     private float _timeElapsed;
     private bool _takingDamage;
