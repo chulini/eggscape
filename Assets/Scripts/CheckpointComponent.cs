@@ -9,13 +9,15 @@ public class CheckpointComponent : MonoBehaviour
     [SerializeField] private FloatGameEvent _onPlayerHealed;
     [SerializeField] private GameObject _checkpointLight;
 
+    private Animator _animator;
     private Renderer _renderer;
-
     private MaterialPropertyBlock _activeBlock;
     private MaterialPropertyBlock _inactiveBlock;
+    private static readonly int _state = Animator.StringToHash("state");
 
     private void Awake()
     {
+        _animator = GetComponentInChildren<Animator>();
         _renderer = _checkpointLight.GetComponent<MeshRenderer>();
         _activeBlock = new MaterialPropertyBlock();
         _inactiveBlock = new MaterialPropertyBlock();
@@ -39,9 +41,11 @@ public class CheckpointComponent : MonoBehaviour
     {
         if (null != _activeCheckpoint.Value)
         {
+            _activeCheckpoint.Value._animator.SetInteger(_state, 3);
             UpdateCheckpointLight(_activeCheckpoint.Value._renderer, _inactiveBlock);
         }
-        
+
+        _animator.SetInteger(_state, 1);
         UpdateCheckpointLight(_renderer, _activeBlock);
         _activeCheckpoint.Value = this;
     }
