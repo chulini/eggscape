@@ -11,7 +11,8 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private GameEvent _onPlayerDied;
     [SerializeField] private GameObjectReference _player;
     [SerializeField] private Collider _damageCollider;
-    [SerializeField] private DamageType _damageType;
+    [SerializeField] private DamageType _damageType = DamageType.None;
+    [SerializeField] private IntGameEvent _onDiedFromDamageType;
 
     private float _timeElapsed;
     private bool _takingDamage;
@@ -33,11 +34,7 @@ public class DamageComponent : MonoBehaviour
 
     private void Update()
     {
-        if (!_takingDamage)
-        {
-            _timeElapsed = _damageInterval;
-        }
-        else
+        if (_takingDamage)
         {
             TakeDamage();
         }
@@ -45,16 +42,23 @@ public class DamageComponent : MonoBehaviour
 
     private void TakeDamage()
     {
-        if (_damageCollider == null || _damageCollider.enabled) {
-            _timeElapsed += Time.deltaTime;
-            if (_timeElapsed > _damageInterval) {
-                _timeElapsed = 0;
-                _eggHealth.Value -= CalculateDamage();
-            }
+        if (_damageCollider != null && !_damageCollider.enabled)
+        {
+            return;
         }
+        
+        _timeElapsed += Time.deltaTime;
+
+        if (!(_timeElapsed > _damageInterval))
+        {
+            return;
+        }
+        
+        _timeElapsed = 0;
+        _eggHealth.Value -= CalculateDamage();
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject != _player.Value && !other.gameObject.CompareTag("Player"))
         {
@@ -65,6 +69,11 @@ public class DamageComponent : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other)
+    {
+        ResetDamageComponent();
+    }
+
+    private void ResetDamageComponent()
     {
         _timeElapsed = _damageInterval;
         _takingDamage = false;
@@ -77,6 +86,11 @@ public class DamageComponent : MonoBehaviour
 
     private void OnPlayerDied()
     {
-        _takingDamage = false;
+        if (_takingDamage)
+        {
+            _onDiedFromDamageType.Raise((int) _damageType);
+        }
+        
+        ResetDamageComponent();
     }
 }

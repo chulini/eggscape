@@ -308,6 +308,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9940e41c1d89b1e42b6a00371c9f9793, type: 3}
   _healthImage: {fileID: 4903222037970993722}
   _deathImage: {fileID: 2068697882681812530}
+  _onDiedFromDamageType: {fileID: 11400000, guid: 12395113dc683464a9a24f5d4d2861e3,
+    type: 2}
+  _onRespawnPlayer: {fileID: 11400000, guid: 6a61ef28937ed6c4991f17f939e1958c, type: 2}
 --- !u!1 &7832770242814274906
 GameObject:
   m_ObjectHideFlags: 0

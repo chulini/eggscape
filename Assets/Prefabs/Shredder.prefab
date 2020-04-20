@@ -101,7 +101,9 @@ MonoBehaviour:
     _constantValue: {fileID: 0}
     _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
   _damageCollider: {fileID: 5734700019585856546}
-  _damageType: 2
+  _damageType: 3
+  _onDiedFromDamageType: {fileID: 11400000, guid: 12395113dc683464a9a24f5d4d2861e3,
+    type: 2}
 --- !u!65 &5734700019585856546
 BoxCollider:
   m_ObjectHideFlags: 0

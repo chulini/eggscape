@@ -11,16 +11,22 @@ public class DisplayEggHealth : MonoBehaviour
     [SerializeField] private Sprite[] _deathImages;
     [SerializeField] private Image _healthImage;
     [SerializeField] private Image _deathImage;
+    [SerializeField] private IntGameEvent _onDiedFromDamageType;
+    [SerializeField] private GameEvent _onRespawnPlayer;
 
     private void OnEnable()
     {
         _eggHealth.AddListener(UpdateHealth);
+        _onDiedFromDamageType.AddListener(OnDiedFromDamageType);
+        _onRespawnPlayer.AddListener(OnPlayerSpawned);
         UpdateHealth();
     }
 
     private void OnDisable()
     {
         _eggHealth.RemoveListener(UpdateHealth);
+        _onRespawnPlayer.RemoveListener(OnPlayerSpawned);
+        _onDiedFromDamageType.RemoveListener(OnDiedFromDamageType);
     }
 
     private void UpdateHealth()
@@ -54,22 +60,21 @@ public class DisplayEggHealth : MonoBehaviour
         _healthImage.sprite = _healthImages[3];
     }
 
-    private void OnHeatDeath()
+    private void OnDiedFromDamageType(int damageType)
     {
+        if (damageType == -1)
+        {
+            _deathImage.gameObject.SetActive(false);
+            
+            return;
+        }
+        
+        _deathImage.gameObject.SetActive(true);
+        _deathImage.sprite = _deathImages[damageType];
     }
 
-    private void OnCrushDeath()
+    private void OnPlayerSpawned()
     {
-        
-    }
-
-    private void OnSlicedDeath()
-    {
-        
-    }
-
-    private void OnCrushedDeath()
-    {
-        
+        _deathImage.gameObject.SetActive(false);
     }
 }
