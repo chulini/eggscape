@@ -252,6 +252,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 6562251764480579176, guid: 191ccca6b9ccf6f4faa66d61adcaad55,
+        type: 3}
+      propertyPath: _onPlayerSpawned
+      value: 
+      objectReference: {fileID: 11400000, guid: adb372bba713a6845b52d1c09a581f8f,
+        type: 2}
     - target: {fileID: 6562251764480579182, guid: 191ccca6b9ccf6f4faa66d61adcaad55,
         type: 3}
       propertyPath: m_Name
