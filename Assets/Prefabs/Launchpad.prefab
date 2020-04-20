@@ -83,11 +83,11 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: 9b5ac4c628c074942a723edc49fc404f, type: 2}
-  impulseUp: 5
-  impulseForward: 5
-  bulletTimeDuration: 1.5
-  bulletTimeTimeScale: 0.1
-  bulletTimeTransitionDuration: 1
+  impulseUp: 3
+  impulseForward: 3
+  bulletTimeDuration: 0
+  bulletTimeTimeScale: 1
+  bulletTimeTransitionDuration: 0
 --- !u!82 &1566807766976908854
 AudioSource:
   m_ObjectHideFlags: 0
