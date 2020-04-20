@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using ScriptableObjectArchitecture;
 
 public class SquishieController : MonoBehaviour
@@ -23,6 +20,7 @@ public class SquishieController : MonoBehaviour
 
     [SerializeField] private GameObjectReference playerObject;
     [SerializeField] private FloatReference playerHealth;
+    [SerializeField] private IntGameEvent _onDiedFromDamageType;
 
     private bool squishingDown;
     private bool movingToInitial;
@@ -32,7 +30,6 @@ public class SquishieController : MonoBehaviour
     [SerializeField] private float delayTime;
 
     private Vector3 _spawnPosition;
-    // [SerializeField] private BoxCollider triggerBoxCollider;
     private AudioSource _audioSource;
 
     private void Awake()
@@ -43,69 +40,96 @@ public class SquishieController : MonoBehaviour
     private void Start()
     {
         _spawnPosition = transform.position;
-        Invoke("WindUp", delayTime);
+        Invoke(nameof(WindUp), delayTime);
     }
 
-    private void FixedUpdate() {
-        if (movingToInitial) {
+    private void FixedUpdate()
+    {
+        if (movingToInitial)
+        {
             _rb.MovePosition(_rb.transform.position + currVelocity * Time.fixedDeltaTime);
-            Vector3 goalPosition = _spawnPosition;
-            Vector3 offset = goalPosition - _rb.position;
-            float angle = Mathf.Abs(Vector3.Angle(offset, transform.up));
-            if (angle > 1f) {
+            var goalPosition = _spawnPosition;
+            var offset = goalPosition - _rb.position;
+            var angle = Mathf.Abs(Vector3.Angle(offset, transform.up));
+            
+            if (angle > 1f)
+            {
                 movingToInitial = false;
                 SquishedUpRest();
             }
-        } else if (windingUp) {
+        }
+        else if (windingUp)
+        {
             _rb.MovePosition(_rb.transform.position + currVelocity * Time.fixedDeltaTime);
-            Vector3 goalPosition = _spawnPosition + transform.up * windUpAmount;
-            Vector3 offset = goalPosition - _rb.position;
-            float angle = Mathf.Abs(Vector3.Angle(offset, transform.up));
-            if (angle > 1f) {
+            var goalPosition = _spawnPosition + transform.up * windUpAmount;
+            var offset = goalPosition - _rb.position;
+            var angle = Mathf.Abs(Vector3.Angle(offset, transform.up));
+            
+            if (angle > 1f)
+            {
                 windingUp = false;
                 WindUpRest();
             }
-        } else if (squishingDown) {
+        }
+        else if (squishingDown)
+        {
             // print("Moving: " + _rb.transform.position + currVelocity * Time.fixedDeltaTime);
-            Vector3 newPosition = _rb.transform.position + currVelocity * Time.fixedDeltaTime;
-            Collider[] results = Physics.OverlapBox(transform.position + actualBoxCollider.center, actualBoxCollider.bounds.size / 2, transform.rotation);
-            if (CheckCollisions(results)) {
+            var newPosition = _rb.transform.position + currVelocity * Time.fixedDeltaTime;
+            var results = Physics.OverlapBox(transform.position + actualBoxCollider.center,
+                actualBoxCollider.bounds.size / 2, transform.rotation);
+            
+            if (CheckCollisions(results))
+            {
                 // print("Collided!");
                 squishingDown = false;
                 SquishDownRest();
-            } else {
+            }
+            else
+            {
                 _rb.MovePosition(newPosition);
             }
         }
     }
 
-    private bool CheckCollisions(Collider[] collisions) {
-        if (collisions == null || collisions.Length <= 0) {
+    private bool CheckCollisions(Collider[] collisions)
+    {
+        if (collisions == null || collisions.Length <= 0)
+        {
             return false;
         }
 
-        int realCollisions = 0;
-        foreach (Collider c in collisions) {
-            if (c!= null && GetParentMostGameObject(c.gameObject) != gameObject) {
+        var realCollisions = 0;
+        foreach (var c in collisions)
+        {
+            if (c != null && GetParentMostGameObject(c.gameObject) != gameObject)
+            {
                 realCollisions += 1;
-                if (c.gameObject == playerObject.Value) {
+                
+                if (c.gameObject == playerObject.Value)
+                {
                     playerHealth.Value -= 9999f;
+                    _onDiedFromDamageType.Raise((int) DamageType.Smashed);
                 }
             }
         }
+
         return realCollisions > 0;
     }
 
-    private GameObject GetParentMostGameObject(GameObject g) {
-        Transform t = g.transform;
-        while (t.parent != null) {
+    private GameObject GetParentMostGameObject(GameObject g)
+    {
+        var t = g.transform;
+        while (t.parent != null)
+        {
             t = t.parent;
         }
+
         return t.gameObject;
     }
 
 
-    private void SquishDown() {
+    private void SquishDown()
+    {
         // print("SquishDown");
         // _audioSource.clip = preparingClip; 
         // _audioSource.Play();
@@ -117,12 +141,12 @@ public class SquishieController : MonoBehaviour
     {
         if (playerGameObject.Value != null)
         {
-            float distance = (playerGameObject.Value.transform.position - transform.position).magnitude;
+            var distance = (playerGameObject.Value.transform.position - transform.position).magnitude;
             if (distance < 4)
             {
                 cameraShakeEvent.Raise(Mathf.Lerp(.3f, .0f, ((distance - 1f) / 4f)));
                 _audioSource.Stop();
-                _audioSource.clip = hitClip; 
+                _audioSource.clip = hitClip;
                 _audioSource.Play();
             }
         }
@@ -130,24 +154,30 @@ public class SquishieController : MonoBehaviour
         Invoke("SquishedUp", squishedDownRestTime);
     }
 
-    private void SquishedUp() {
+    private void SquishedUp()
+    {
         // print("SquishedUp");
         movingToInitial = true;
-        currVelocity = transform.up * (Vector3.Distance(_rb.transform.position , _spawnPosition) / squishedUpTime);
+        currVelocity = transform.up * (Vector3.Distance(_rb.transform.position, _spawnPosition) / squishedUpTime);
     }
 
-    private void SquishedUpRest() {
+    private void SquishedUpRest()
+    {
         // print("SquishedUpRest");
         Invoke("WindUp", squishedUpRestTime);
     }
 
-    private void WindUp() {
+    private void WindUp()
+    {
         // print("Wind Up");
         windingUp = true;
-        currVelocity = transform.up * (Vector3.Distance(_rb.transform.position, _spawnPosition + transform.up * windUpAmount) / windUpTime);
+        currVelocity = transform.up *
+                       (Vector3.Distance(_rb.transform.position, _spawnPosition + transform.up * windUpAmount) /
+                        windUpTime);
     }
 
-    private void WindUpRest() {
+    private void WindUpRest()
+    {
         // print("Wind Up Rest");
         Invoke("SquishDown", windUpRestTime);
     }

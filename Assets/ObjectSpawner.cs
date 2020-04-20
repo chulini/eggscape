@@ -16,7 +16,7 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnNewObject", 0f, _spawnFrequency);
+        InvokeRepeating(nameof(SpawnNewObject), 0f, _spawnFrequency);
     }
 
     void Update()
