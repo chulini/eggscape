@@ -3,7 +3,6 @@ using Rewired;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
-
 /// <summary>
 /// Update axises scriptable objects from the player input 
 /// </summary>
@@ -11,8 +10,8 @@ public class PlayerInput : MonoBehaviour
 {
 #pragma warning disable 0649
     private Rewired.Player player;
+
     private int playerId = 0;
-    // private bool _internalPauseState;
 
     [Header("Scriptable Objects (Writing)")] [SerializeField]
     private FloatVariable _xAxisMove;
@@ -20,17 +19,13 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private FloatVariable _yAxisMove;
     [SerializeField] private FloatVariable _xAxisView;
     [SerializeField] private FloatVariable _yAxisView;
-    // [SerializeField] private BoolGameEvent _onPauseEvent;
-    [SerializeField] private GameEvent _onPlayerDiedEvent;
-    [SerializeField] private GameEvent _onPlayerSpawnedEvent;
+    [SerializeField] private GameEvent _onSkipCinematic;
     [SerializeField] private GameStateVariable currentGameState;
 #pragma warning restore 0649
 
     private void Start()
     {
         player = ReInput.players.GetPlayer(playerId);
-        // _internalPauseState = false;
-        // _onPauseEvent.Raise(false);
     }
 
     private void Update()
@@ -43,23 +38,11 @@ public class PlayerInput : MonoBehaviour
             _xAxisMove.Value = 0;
             _xAxisView.Value = 0;
             _yAxisView.Value = 0;
-            
+
             return;
         }
 
         HandleMovementPressed();
-    }
-
-    private void OnEnable()
-    {
-        _onPlayerDiedEvent.AddListener(OnPlayerDied);
-        _onPlayerSpawnedEvent.AddListener(OnPlayerSpawned);
-    }
-
-    private void OnDisable()
-    {
-        _onPlayerDiedEvent.RemoveListener(OnPlayerDied);
-        _onPlayerSpawnedEvent.RemoveListener(OnPlayerSpawned);
     }
 
     private void HandlePausePressed()
@@ -67,7 +50,6 @@ public class PlayerInput : MonoBehaviour
         if (player.GetButtonDown("PauseMenu"))
         {
             TogglePaused();
-            // _onPauseEvent.Raise(_internalPauseState);
         }
     }
 
@@ -85,21 +67,13 @@ public class PlayerInput : MonoBehaviour
 
     private void TogglePaused()
     {
-        // _internalPauseState = !_internalPauseState;
-        if (currentGameState.Value != GameState.playing)
-            currentGameState.Value = GameState.playing;
-        else
-            currentGameState.Value = GameState.paused;
-    }
-    
-
-    private void OnPlayerDied()
-    {
-        // _internalPauseState = true;
-    }
-
-    private void OnPlayerSpawned()
-    {
-        // _internalPauseState = false;
+        if (currentGameState.Value == GameState.cinematic)
+        {
+            _onSkipCinematic.Raise();
+            
+            return;
+        }
+        
+        currentGameState.Value = currentGameState.Value != GameState.playing ? GameState.playing : GameState.paused;
     }
 }
