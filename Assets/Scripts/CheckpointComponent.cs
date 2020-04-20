@@ -19,7 +19,7 @@ public class CheckpointComponent : MonoBehaviour
     private AudioSource _audioSource;
     private const float _soundDelay = 0.33f;
 
-    private void Awake()
+    private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponentInChildren<Animator>();
@@ -82,14 +82,19 @@ public class CheckpointComponent : MonoBehaviour
     private static void AnimateCheckpoint(Renderer lightRenderer, MaterialPropertyBlock block, Animator animator,
         DoorState animationState)
     {
+        if (null == lightRenderer || null == animator)
+        {
+            return;
+        }
+        
         lightRenderer.SetPropertyBlock(block);
         animator.SetInteger(_state, (int) animationState);
     }
 
     private void InitialiseCheckpointAnimation()
     {
-        if (_animator.GetInteger(_state) == 1 || _gameState.Value != GameState.playing ||
-            _activeCheckpoint.Value != this)
+        if (null == _animator || _animator.GetInteger(_state) == 1 || _gameState.Value != GameState.playing ||
+            null == _activeCheckpoint.Value  || _activeCheckpoint.Value != this)
         {
             return;
         }
