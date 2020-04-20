@@ -1,5 +1,6 @@
 ﻿using ScriptableObjectArchitecture;
 using UnityEngine;
+using DoorState = SpawnerDoorAnimationState;
 
 public class CheckpointComponent : MonoBehaviour
 {
@@ -65,11 +66,11 @@ public class CheckpointComponent : MonoBehaviour
         if (null != _activeCheckpoint.Value)
         {
             var previous = _activeCheckpoint.Value;
-            AnimateCheckpoint(previous._renderer, _inactiveBlock, previous._animator, 3);
+            AnimateCheckpoint(previous._renderer, _inactiveBlock, previous._animator, DoorState.Close);
         }
 
         _audioSource.PlayDelayed(_soundDelay);
-        AnimateCheckpoint(_renderer, _activeBlock, _animator, 1);
+        AnimateCheckpoint(_renderer, _activeBlock, _animator, DoorState.Open);
         _activeCheckpoint.Value = this;
     }
 
@@ -79,10 +80,10 @@ public class CheckpointComponent : MonoBehaviour
     }
 
     private static void AnimateCheckpoint(Renderer lightRenderer, MaterialPropertyBlock block, Animator animator,
-        int animationState)
+        DoorState animationState)
     {
         lightRenderer.SetPropertyBlock(block);
-        animator.SetInteger(_state, animationState);
+        animator.SetInteger(_state, (int) animationState);
     }
 
     private void InitialiseCheckpointAnimation()
@@ -94,12 +95,12 @@ public class CheckpointComponent : MonoBehaviour
         }
 
         _audioSource.PlayDelayed(_soundDelay);
-        AnimateCheckpoint(_renderer, _activeBlock, _animator, 1);
+        AnimateCheckpoint(_renderer, _activeBlock, _animator, DoorState.Open);
     }
 
     private void OnSpawnPlayer()
     {
         var previous = _activeCheckpoint.Value;
-        AnimateCheckpoint(previous._renderer, _inactiveBlock, previous._animator, 4);
+        AnimateCheckpoint(previous._renderer, _inactiveBlock, previous._animator, DoorState.ForceClose);
     }
 }
