@@ -629,9 +629,8 @@ MonoBehaviour:
     _constantValue: {fileID: 0}
     _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
   _damageCollider: {fileID: 0}
-  _damageType: 1
-  _onDiedFromDamageType: {fileID: 11400000, guid: 12395113dc683464a9a24f5d4d2861e3,
-    type: 2}
+  _damageType: 0
+  _onDiedFromDamageType: {fileID: 0}
 --- !u!54 &241419644
 Rigidbody:
   m_ObjectHideFlags: 0

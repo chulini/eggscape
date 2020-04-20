@@ -9,14 +9,11 @@ using UnityEngine.Rendering;
 public class ParticleToggler : MonoBehaviour
 {
 #pragma warning disable 0649
-    [SerializeField] FloatReference period;
-    [SerializeField] AudioClip activateSoundClip;
+    [SerializeField] private FloatReference period;
 #pragma warning restore 0649
     private ParticleSystem _particleSystem;
     private bool particlesOn = true;
     private Collider _collider;
-    private AudioSource _audioSource;
-    [SerializeField] private float _initialWaitTime;
     
     private void Awake()
     {
@@ -24,9 +21,6 @@ public class ParticleToggler : MonoBehaviour
         if (_collider == null) {
             _collider = GetComponent<Collider>();
         }
-
-        _audioSource = GetComponent<AudioSource>();
-        
     }
 
     private void OnEnable()
@@ -47,12 +41,7 @@ public class ParticleToggler : MonoBehaviour
 
     private void Start()
     {
-        Invoke("StartSpraying", _initialWaitTime);
-    }
-
-    private void StartSpraying() {
         InvokeRepeating("ToggleParticles", period.Value, period.Value);
-
     }
 
     private void ToggleParticles()
@@ -61,20 +50,11 @@ public class ParticleToggler : MonoBehaviour
         {
             _particleSystem.Stop();
             _collider.enabled = false;
-            if (_audioSource != null && activateSoundClip != null)
-            {
-                _audioSource.Stop();
-            }
         }
         else
         {
             _particleSystem.Play();
             _collider.enabled = true;
-            if (_audioSource != null && activateSoundClip != null)
-            {
-                _audioSource.clip = activateSoundClip;
-                _audioSource.Play();
-            }
         }
 
         particlesOn = !particlesOn;

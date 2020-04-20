@@ -5,4 +5,5 @@ public enum DamageType
     Crushed = 1,
     Scrambled = 2,
     Sliced = 3,
+    Smashed = 4,
 }
