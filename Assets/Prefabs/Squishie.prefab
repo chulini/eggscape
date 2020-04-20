@@ -168,6 +168,8 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: 0
     _variable: {fileID: 11400000, guid: d224fa43591ebe84eaad2479bf54ae9d, type: 2}
+  _onDiedFromDamageType: {fileID: 11400000, guid: 12395113dc683464a9a24f5d4d2861e3,
+    type: 2}
   actualBoxCollider: {fileID: 8857200747061699164}
   delayTime: 1
 --- !u!82 &9062476923174209975
