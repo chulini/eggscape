@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6412759316207136532}
   m_LocalRotation: {x: -0.00000011920929, y: -0.00000008940697, z: 0.9640076, w: 0.26587474}
-  m_LocalPosition: {x: 0.021, y: 0.07, z: 0.461}
+  m_LocalPosition: {x: 0.115, y: 0.228, z: 0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7932062164365278268}
@@ -217,6 +217,7 @@ MonoBehaviour:
     _constantValue: 0
     _variable: {fileID: 11400000, guid: 381fa161de51c5545b433a45eb2f7542, type: 2}
   activateSoundClip: {fileID: 8300000, guid: 7643a3d26fa24dc44844ca2defd3f521, type: 3}
+  _initialWaitTime: 0
 --- !u!199 &1068964856958887541
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -364,7 +365,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.11
+      scalar: 0.13
       minScalar: 5
       maxCurve:
         serializedVersion: 2
