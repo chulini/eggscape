@@ -4,16 +4,16 @@ using Random = UnityEngine.Random;
 
 public class DamageComponent : MonoBehaviour
 {
+#pragma warning disable 0649
     [SerializeField] private Vector2 _damageRange = new Vector2(1, 10);
     [SerializeField] private float _damageInterval = 1f;
-
     [SerializeField] private FloatReference _eggHealth;
     [SerializeField] private GameEvent _onPlayerDied;
     [SerializeField] private GameObjectReference _player;
     [SerializeField] private Collider _damageCollider;
     [SerializeField] private DamageType _damageType = DamageType.None;
     [SerializeField] private IntGameEvent _onDiedFromDamageType;
-
+#pragma warning restore 0649
     private float _timeElapsed;
     private bool _takingDamage;
 
@@ -73,7 +73,7 @@ public class DamageComponent : MonoBehaviour
         ResetDamageComponent();
     }
 
-    private void ResetDamageComponent()
+    public void ResetDamageComponent()
     {
         _timeElapsed = _damageInterval;
         _takingDamage = false;
