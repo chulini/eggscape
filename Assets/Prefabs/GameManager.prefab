@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 1718833133790920299}
   - component: {fileID: 4410393756516032081}
   - component: {fileID: 6595925601316071007}
+  - component: {fileID: 3717002571827174387}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -162,7 +163,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4410393756516032081}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3717002571827174387}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3717002571827174387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043320548082437148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ed6604f0e7f4447b94895b91d7362e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: https://twitter.com/PurpleFlameSt
 --- !u!1 &2465672410423720473
 GameObject:
   m_ObjectHideFlags: 0
