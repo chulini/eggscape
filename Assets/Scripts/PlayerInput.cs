@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
 #pragma warning disable 0649
     private Rewired.Player player;
     private int playerId = 0;
-    private bool _internalPauseState;
+    // private bool _internalPauseState;
 
     [Header("Scriptable Objects (Writing)")] [SerializeField]
     private FloatVariable _xAxisMove;
@@ -20,23 +20,24 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private FloatVariable _yAxisMove;
     [SerializeField] private FloatVariable _xAxisView;
     [SerializeField] private FloatVariable _yAxisView;
-    [SerializeField] private BoolGameEvent _onPauseEvent;
+    // [SerializeField] private BoolGameEvent _onPauseEvent;
     [SerializeField] private GameEvent _onPlayerDiedEvent;
     [SerializeField] private GameEvent _onPlayerSpawnedEvent;
+    [SerializeField] private GameStateVariable currentGameState;
 #pragma warning restore 0649
 
     private void Start()
     {
         player = ReInput.players.GetPlayer(playerId);
-        _internalPauseState = false;
-        _onPauseEvent.Raise(false);
+        // _internalPauseState = false;
+        // _onPauseEvent.Raise(false);
     }
 
     private void Update()
     {
         HandlePausePressed();
 
-        if (_internalPauseState)
+        if (currentGameState.Value != GameState.playing)
         {
             _yAxisMove.Value = 0;
             _xAxisMove.Value = 0;
@@ -66,7 +67,7 @@ public class PlayerInput : MonoBehaviour
         if (player.GetButtonDown("PauseMenu"))
         {
             TogglePaused();
-            _onPauseEvent.Raise(_internalPauseState);
+            // _onPauseEvent.Raise(_internalPauseState);
         }
     }
 
@@ -84,16 +85,21 @@ public class PlayerInput : MonoBehaviour
 
     private void TogglePaused()
     {
-        _internalPauseState = !_internalPauseState;
+        // _internalPauseState = !_internalPauseState;
+        if (currentGameState.Value != GameState.playing)
+            currentGameState.Value = GameState.playing;
+        else
+            currentGameState.Value = GameState.paused;
     }
+    
 
     private void OnPlayerDied()
     {
-        _internalPauseState = true;
+        // _internalPauseState = true;
     }
 
     private void OnPlayerSpawned()
     {
-        _internalPauseState = false;
+        // _internalPauseState = false;
     }
 }

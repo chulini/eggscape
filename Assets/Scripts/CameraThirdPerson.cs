@@ -66,9 +66,6 @@ namespace Camera
             Cursor.lockState = CursorLockMode.Locked;
             Destroy(GetComponent<AudioListener>());
             _cameraParentFollowingPlayer.gameObject.AddComponent<AudioListener>();
-            if(UIManager.instance == null)
-                SceneManager.LoadScene("UI", LoadSceneMode.Additive);
-
         }
 
         private void OnDisable()
