@@ -5,7 +5,7 @@ using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-[RequireComponent(typeof(DamageComponent))]
+// [RequireComponent(typeof(DamageComponent))]
 public class ParticleToggler : MonoBehaviour
 {
 #pragma warning disable 0649
@@ -18,7 +18,9 @@ public class ParticleToggler : MonoBehaviour
     private void Awake()
     {
         _particleSystem = GetComponent<ParticleSystem>();
-        _collider = GetComponent<Collider>();
+        if (_collider == null) {
+            _collider = GetComponent<Collider>();
+        }
     }
 
     private void OnEnable()

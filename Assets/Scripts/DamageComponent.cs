@@ -10,7 +10,7 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private FloatReference _eggHealth;
     [SerializeField] private GameEvent _onPlayerDied;
     [SerializeField] private GameObjectReference _player;
-    
+    [SerializeField] private Collider _damageCollider;
     [SerializeField] private DamageType _damageType;
 
     private float _timeElapsed;
@@ -45,11 +45,12 @@ public class DamageComponent : MonoBehaviour
 
     private void TakeDamage()
     {
-        _timeElapsed += Time.deltaTime;
-        if (_timeElapsed > _damageInterval)
-        {
-            _timeElapsed = 0;
-            _eggHealth.Value -= CalculateDamage();
+        if (_damageCollider == null || _damageCollider.enabled) {
+            _timeElapsed += Time.deltaTime;
+            if (_timeElapsed > _damageInterval) {
+                _timeElapsed = 0;
+                _eggHealth.Value -= CalculateDamage();
+            }
         }
     }
 

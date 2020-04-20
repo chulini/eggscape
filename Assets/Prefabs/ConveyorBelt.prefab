@@ -206,7 +206,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.85, y: 0.2, z: 2.06}
+  m_Size: {x: 3.915, y: 0.2, z: 2.06}
   m_Center: {x: 0, y: 0.03, z: 0}
 --- !u!54 &3335253207934852998
 Rigidbody:
@@ -263,9 +263,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 13.19
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0

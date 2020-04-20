@@ -107,8 +107,8 @@ public class SquishieController : MonoBehaviour
 
     private void SquishDown() {
         // print("SquishDown");
-        _audioSource.clip = preparingClip; 
-        _audioSource.Play();
+        // _audioSource.clip = preparingClip; 
+        // _audioSource.Play();
         squishingDown = true;
         currVelocity = -transform.up * squishDownSpeed;
     }
