@@ -709,7 +709,5 @@ MonoBehaviour:
   _yAxisMove: {fileID: 11400000, guid: 91962f6c5a197b64c98bfcaecb8fe0a0, type: 2}
   _xAxisView: {fileID: 11400000, guid: ba797403c84f5d7478a5355b4534cbc0, type: 2}
   _yAxisView: {fileID: 11400000, guid: 65675a885c84cd54199895a2ce629978, type: 2}
-  _onPlayerDiedEvent: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
-  _onPlayerSpawnedEvent: {fileID: 11400000, guid: adb372bba713a6845b52d1c09a581f8f,
-    type: 2}
+  _onSkipCinematic: {fileID: 11400000, guid: bf99d0fd8ba10bd4395114fb4ff61afa, type: 2}
   currentGameState: {fileID: 11400000, guid: 0064ce52d0c529d498602112c258be96, type: 2}

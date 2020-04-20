@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using ScriptableObjectArchitecture;
+﻿using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -9,11 +6,13 @@ public class CinematicTrigger : MonoBehaviour
 {
     [SerializeField] private GameStateVariable currentGameState;
     [SerializeField] private GameObjectReference cinematicGameObject;
+    [SerializeField] private GameEvent _onSkipCinematic;
 
     private void OnEnable()
     {
         cinematicGameObject.Value = gameObject;
         currentGameState.AddListener(CurrentGameStateChanged);
+        _onSkipCinematic.AddListener(CinematicFinished);
         
     }
 
@@ -21,18 +20,21 @@ public class CinematicTrigger : MonoBehaviour
     {
         currentGameState.RemoveListener(CurrentGameStateChanged);
         cinematicGameObject.Value = null;
+        _onSkipCinematic.RemoveListener(CinematicFinished);
     }
 
     private void CurrentGameStateChanged()
     {
-        if (currentGameState.Value == GameState.cinematic)
+        if (currentGameState.Value != GameState.cinematic)
         {
-            GetComponent<PlayableDirector>().Play();
-            Invoke("CinematicFinished", (float)GetComponent<PlayableDirector>().duration);    
+            return;
         }
+        
+        GetComponent<PlayableDirector>().Play();
+        Invoke(nameof(CinematicFinished), (float) GetComponent<PlayableDirector>().duration);
     }
 
-    void CinematicFinished()
+    private void CinematicFinished()
     {
         currentGameState.Value = GameState.playing;
         DestroyImmediate(gameObject);
