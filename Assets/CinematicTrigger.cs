@@ -8,15 +8,19 @@ using UnityEngine.Playables;
 public class CinematicTrigger : MonoBehaviour
 {
     [SerializeField] private GameStateVariable currentGameState;
+    [SerializeField] private GameObjectReference cinematicGameObject;
 
     private void OnEnable()
     {
+        cinematicGameObject.Value = gameObject;
         currentGameState.AddListener(CurrentGameStateChanged);
+        
     }
 
     private void OnDisable()
     {
         currentGameState.RemoveListener(CurrentGameStateChanged);
+        cinematicGameObject.Value = null;
     }
 
     private void CurrentGameStateChanged()

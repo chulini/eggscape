@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameStateVariable currentGameState;
     // [SerializeField] private GameEvent _playerStarted;
     [SerializeField] private BoolReference playerStartedTheGame;
+    [SerializeField] private GameObjectReference cinematicGameObject;
     private void Awake()
     {
         // if (instance == null)
@@ -88,7 +89,7 @@ public class UIManager : MonoBehaviour
     public void PlayClicked()
     {
         // _playerStarted.Raise();
-        currentGameState.Value = GameState.cinematic;
+        currentGameState.Value = cinematicGameObject.Value != null ? GameState.cinematic : GameState.playing;
         playerStartedTheGame.Value = true;
     }
 
