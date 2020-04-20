@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
             torquePower -= forwardDirection * _xAxisMove.Value * _torqueMaxPower.Value.x;
         }
         _rigidbody.AddTorque(torquePower, ForceMode.Force);
-
+        
         // Movement in air
         Vector3 movementDirection = (forwardDirection * _yAxisMove.Value + rightDirection * _xAxisMove.Value).WithY(0f).normalized;
         // bool isGrounded = Physics.Raycast(transform.position + new Vector3(0f, 0.1f, 0f), Vector3.down, 0.2f);

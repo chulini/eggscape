@@ -3,34 +3,41 @@ using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum GameState
+{
+    startMenu, cinematic, paused, playing
+}
+
 public class GameManager : MonoBehaviour
 {
+     
     [SerializeField] private CheckpointComponentVariable _activeCheckpoint;
     [SerializeField] private CheckpointComponent _levelStartPoint;
     [SerializeField] private FloatVariable _eggHealth;
     [SerializeField] private GameEvent _onRespawnPlayer;
-    [SerializeField] private BoolGameEvent _onPausedEvent;
+    // [SerializeField] private BoolGameEvent _onPausedEvent;
     [SerializeField] private FloatGameEvent _onScreenFade;
     [SerializeField] private FloatGameEvent _onPlayerHeal;
     [SerializeField] private Canvas _screenFade;
     [SerializeField] private float _fadeChangeStep = 0.05f;
     [SerializeField] private float _fadeChangeInterval = 0.05f;
-
+    [SerializeField] private GameStateVariable currentGameState;
     private Coroutine _fadeCoroutine;
     private Image _fadeImage;
     private float _currentTimeScale;
-
+    
     private void Awake()
     {
+        _currentTimeScale = 1f;
         SetSpawnPoint();
         _fadeImage = _screenFade.GetComponentInChildren<Image>();
     }
 
     private void Start()
     {
-        _onRespawnPlayer.Raise();
-        _screenFade.gameObject.SetActive(true);
-        _onScreenFade.Raise(0f);
+        // _onRespawnPlayer.Raise();
+        // _screenFade.gameObject.SetActive(true);
+        // _onScreenFade.Raise(0f);
     }
 
     private void OnDestroy()
@@ -41,15 +48,22 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         _onScreenFade.AddListener(OnFade);
-        _onPausedEvent.AddListener(OnPause);
         _onPlayerHeal.AddListener(OnPlayerHeal);
+        currentGameState.AddListener(GameStateChangeHandler);
     }
 
     private void OnDisable() 
     {
         _onScreenFade.RemoveListener(OnFade);
-        _onPausedEvent.RemoveListener(OnPause);
         _onPlayerHeal.RemoveListener(OnPlayerHeal);
+        currentGameState.RemoveListener(GameStateChangeHandler);
+    }
+
+    private void GameStateChangeHandler()
+    {
+        Debug.Log($"currentGameState.Value {currentGameState.Value}");
+        OnPauseFadeHandler(currentGameState.Value == GameState.paused);
+        OnPauseTimeScaleHandler(currentGameState.Value == GameState.paused);
     }
 
     private void SetSpawnPoint()
@@ -111,11 +125,10 @@ public class GameManager : MonoBehaviour
         return opacity < targetOpacity || opacity > targetOpacity;
     }
 
-    private void OnPause(bool isPaused)
-    {
-        OnPauseFadeHandler(isPaused);
-        OnPauseTimeScaleHandler(isPaused);
-    }
+    // private void OnPause(bool isPaused)
+    // {
+    //
+    // }
 
     private void OnPauseFadeHandler(bool isPaused)
     {
@@ -138,7 +151,6 @@ public class GameManager : MonoBehaviour
 
             return;
         }
-
         Time.timeScale = _currentTimeScale;
     }
 
