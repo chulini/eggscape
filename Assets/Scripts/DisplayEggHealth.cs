@@ -12,20 +12,20 @@ public class DisplayEggHealth : MonoBehaviour
     [SerializeField] private Image _healthImage;
     [SerializeField] private Image _deathImage;
     [SerializeField] private IntGameEvent _onDiedFromDamageType;
-    [SerializeField] private GameEvent _onPlayerSpawned;
+    [SerializeField] private GameEvent _onRespawnPlayer;
 
     private void OnEnable()
     {
         _eggHealth.AddListener(UpdateHealth);
         _onDiedFromDamageType.AddListener(OnDiedFromDamageType);
-        _onPlayerSpawned.AddListener(OnPlayerSpawned);
+        _onRespawnPlayer.AddListener(OnPlayerSpawned);
         UpdateHealth();
     }
 
     private void OnDisable()
     {
         _eggHealth.RemoveListener(UpdateHealth);
-        _onPlayerSpawned.RemoveListener(OnPlayerSpawned);
+        _onRespawnPlayer.RemoveListener(OnPlayerSpawned);
         _onDiedFromDamageType.RemoveListener(OnDiedFromDamageType);
     }
 
