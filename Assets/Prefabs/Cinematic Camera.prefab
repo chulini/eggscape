@@ -164,3 +164,4 @@ MonoBehaviour:
     _useConstant: 0
     _constantValue: {fileID: 0}
     _variable: {fileID: 11400000, guid: b94f7ef756ea77f43a3e861a7c504982, type: 2}
+  _onSkipCinematic: {fileID: 11400000, guid: bf99d0fd8ba10bd4395114fb4ff61afa, type: 2}

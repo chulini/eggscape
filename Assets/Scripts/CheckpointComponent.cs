@@ -10,6 +10,7 @@ public class CheckpointComponent : MonoBehaviour
     [SerializeField] private GameObject _checkpointLight;
     [SerializeField] private GameEvent _onSpawnPlayer;
     [SerializeField] private GameStateVariable _gameState;
+    [SerializeField] private bool _respawnerVisible = true;
 
     private Animator _animator;
     private Renderer _renderer;
@@ -69,8 +70,12 @@ public class CheckpointComponent : MonoBehaviour
             AnimateCheckpoint(previous._renderer, _inactiveBlock, previous._animator, DoorState.Close);
         }
 
-        _audioSource.PlayDelayed(_soundDelay);
-        AnimateCheckpoint(_renderer, _activeBlock, _animator, DoorState.Open);
+        if (_respawnerVisible)
+        {
+            _audioSource.PlayDelayed(_soundDelay);
+            AnimateCheckpoint(_renderer, _activeBlock, _animator, DoorState.Open);
+        }
+        
         _activeCheckpoint.Value = this;
     }
 
@@ -93,7 +98,7 @@ public class CheckpointComponent : MonoBehaviour
 
     private void InitialiseCheckpointAnimation()
     {
-        if (null == _animator || _animator.GetInteger(_state) == 1 || _gameState.Value != GameState.playing ||
+        if (!_respawnerVisible || null == _animator || _animator.GetInteger(_state) == 1 || _gameState.Value != GameState.playing ||
             null == _activeCheckpoint.Value  || _activeCheckpoint.Value != this)
         {
             return;
