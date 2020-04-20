@@ -2199,7 +2199,7 @@ MonoBehaviour:
     _constantValue: {fileID: 0}
     _variable: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
   _damageCollider: {fileID: 241419642}
-  _damageType: 0
+  _damageType: 4
   _onDiedFromDamageType: {fileID: 11400000, guid: 12395113dc683464a9a24f5d4d2861e3,
     type: 2}
 --- !u!54 &241419644
@@ -4147,7 +4147,7 @@ PrefabInstance:
     - target: {fileID: 7290830089769665442, guid: 3e3fcee2cda682e4e97e29c05990819f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.015
+      value: 1.672
       objectReference: {fileID: 0}
     - target: {fileID: 7290830089769665442, guid: 3e3fcee2cda682e4e97e29c05990819f,
         type: 3}
