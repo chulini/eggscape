@@ -138,8 +138,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef3512160a0b2e41ac8fb21be05933c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelPassedEvent: {fileID: 11400000, guid: d094726796960b542ad03c49034c5bb9, type: 2}
   nextSceneName: 01_Rene_VentilationShaft
+  playerGameObject: {fileID: 11400000, guid: ce302b25855f96c4ba5260f28897c1be, type: 2}
   playerDied: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
+  _playerStarted: {fileID: 11400000, guid: 928e378d91d238d448f9dcf951227d24, type: 2}
 --- !u!54 &8695221298867573185
 Rigidbody:
   m_ObjectHideFlags: 0
