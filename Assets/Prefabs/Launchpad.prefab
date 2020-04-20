@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchClip: {fileID: 8300000, guid: c02ea77f72bbe444983057db416f2181, type: 3}
-  invulnerabilityTime: 0.1
+  invulnerabilityTime: 0.2
   _rb: {fileID: 6675365639211743745}
   eggInvulnerability:
     _useConstant: 0
