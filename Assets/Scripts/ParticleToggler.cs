@@ -16,6 +16,7 @@ public class ParticleToggler : MonoBehaviour
     private bool particlesOn = true;
     private Collider _collider;
     private AudioSource _audioSource;
+    [SerializeField] private float _initialWaitTime;
     
     private void Awake()
     {
@@ -46,7 +47,12 @@ public class ParticleToggler : MonoBehaviour
 
     private void Start()
     {
+        Invoke("StartSpraying", _initialWaitTime);
+    }
+
+    private void StartSpraying() {
         InvokeRepeating("ToggleParticles", period.Value, period.Value);
+
     }
 
     private void ToggleParticles()
