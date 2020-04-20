@@ -87,6 +87,7 @@ MonoBehaviour:
   _checkpointLight: {fileID: 6333977923514841228}
   _onSpawnPlayer: {fileID: 11400000, guid: 6a61ef28937ed6c4991f17f939e1958c, type: 2}
   _gameState: {fileID: 11400000, guid: 0064ce52d0c529d498602112c258be96, type: 2}
+  _respawnerVisible: 1
 --- !u!82 &5435815925308049877
 AudioSource:
   m_ObjectHideFlags: 0
@@ -213,7 +214,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: c05b388c82f3edd48b241757c2f84574,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c05b388c82f3edd48b241757c2f84574,
         type: 3}
@@ -223,7 +224,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: c05b388c82f3edd48b241757c2f84574,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c05b388c82f3edd48b241757c2f84574,
         type: 3}
@@ -238,7 +239,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: c05b388c82f3edd48b241757c2f84574,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c05b388c82f3edd48b241757c2f84574,
         type: 3}

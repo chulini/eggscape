@@ -63,7 +63,7 @@ public class PlayerSpawnManager : MonoBehaviour
     private void SpawnPlayer()
     {
         Debug.Log($"SpawnPlayer()");
-        _playerReference.Value = Instantiate(_playerPrefab, _activeCheckpoint.Value.transform.position, Quaternion.identity);
+        _playerReference.Value = Instantiate(_playerPrefab, _activeCheckpoint.Value.transform.position, _activeCheckpoint.Value.transform.rotation);
     }
 
     private void RespawnPlayer()
