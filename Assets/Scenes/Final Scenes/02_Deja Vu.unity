@@ -3794,8 +3794,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387690661}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 2.8998022, y: -14.567, z: -236.5}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalPosition: {x: 1.273, y: -14.567, z: -236.5}
+  m_LocalScale: {x: 20, y: 1, z: 16.74378}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 119
@@ -4833,8 +4833,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465880201}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 2.9, y: -14.567, z: -215.5}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalPosition: {x: 1.324, y: -14.567, z: -215.5}
+  m_LocalScale: {x: 20, y: 1, z: 16.84}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 115
@@ -6787,7 +6787,7 @@ PrefabInstance:
     - target: {fileID: 982380909529015329, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
       propertyPath: diskSpeedZ._constantValue
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 982380909529015329, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
@@ -10259,7 +10259,7 @@ PrefabInstance:
     - target: {fileID: 982380909529015329, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
       propertyPath: diskSpeedZ._constantValue
-      value: -30
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 982380909529015329, guid: 9b8b210cef29344479346432fc79851b,
         type: 3}
@@ -13886,7 +13886,7 @@ PrefabInstance:
     - target: {fileID: 7791885000302909616, guid: 65e015927e7411c4da34207b847eb436,
         type: 3}
       propertyPath: diskSpeedY._constantValue
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65e015927e7411c4da34207b847eb436, type: 3}
@@ -15087,7 +15087,7 @@ PrefabInstance:
     - target: {fileID: 7791885000302909616, guid: 65e015927e7411c4da34207b847eb436,
         type: 3}
       propertyPath: diskSpeedZ._constantValue
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65e015927e7411c4da34207b847eb436, type: 3}
@@ -16160,7 +16160,7 @@ PrefabInstance:
     - target: {fileID: 8695221298867573184, guid: e8e3acc82c76aff40a6f9e8beacc382c,
         type: 3}
       propertyPath: nextSceneName
-      value: 03_Factory
+      value: 03_Factory3
       objectReference: {fileID: 0}
     - target: {fileID: 8695221298867573186, guid: e8e3acc82c76aff40a6f9e8beacc382c,
         type: 3}
@@ -21736,7 +21736,7 @@ PrefabInstance:
     - target: {fileID: 7791885000302909616, guid: 65e015927e7411c4da34207b847eb436,
         type: 3}
       propertyPath: diskSpeedZ._constantValue
-      value: -50
+      value: -70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65e015927e7411c4da34207b847eb436, type: 3}
