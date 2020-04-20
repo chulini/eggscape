@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using ScriptableObjectArchitecture;
 
 public class FallDamage : MonoBehaviour
@@ -11,6 +9,7 @@ public class FallDamage : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private FloatReference _eggHealth;
     [SerializeField] private IntReference _eggInvulnerability;
+    [SerializeField] private IntGameEvent _onDiedFromDamageType;
     private Vector3 _lastVelocity;
 
     private void Start()
@@ -20,19 +19,22 @@ public class FallDamage : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (null == _rb)
+        if (_eggInvulnerability.Value > 0 || null == _rb)
         {
             return;
         }
 
         var deltaVelocity = (_rb.velocity - _lastVelocity).magnitude;
 
-        if (deltaVelocity > velocityDamageThreshold && _eggInvulnerability.Value <= 0)
+        if (deltaVelocity > velocityDamageThreshold)
         {
             var damage = deltaVelocity * velocityDamageMultiplier;
             _eggHealth.Value -= damage;
-            // Debug.Log("Velocity: " + deltaVelocity.ToString());
-            // Debug.Log("Damage: " + (damage).ToString());
+
+            if (_eggHealth.Value <= float.Epsilon)
+            {
+                _onDiedFromDamageType.Raise((int) DamageType.Smashed);
+            }
         }
 
         _lastVelocity = _rb.velocity;
