@@ -1,5 +1,4 @@
 ﻿using ScriptableObjectArchitecture;
-using UnityEditor;
 using UnityEngine;
 
 public class CheckpointComponent : MonoBehaviour
@@ -8,15 +7,20 @@ public class CheckpointComponent : MonoBehaviour
     [SerializeField] private CheckpointComponentVariable _activeCheckpoint;
     [SerializeField] private FloatGameEvent _onPlayerHealed;
     [SerializeField] private GameObject _checkpointLight;
+    [SerializeField] private GameEvent _onSpawnPlayer;
+    [SerializeField] private GameStateVariable _gameState;
 
     private Animator _animator;
     private Renderer _renderer;
     private MaterialPropertyBlock _activeBlock;
     private MaterialPropertyBlock _inactiveBlock;
     private static readonly int _state = Animator.StringToHash("state");
+    private AudioSource _audioSource;
+    private float _soundDelay = 0.33f;
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _animator = GetComponentInChildren<Animator>();
         _renderer = _checkpointLight.GetComponent<MeshRenderer>();
         _activeBlock = new MaterialPropertyBlock();
@@ -24,6 +28,18 @@ public class CheckpointComponent : MonoBehaviour
         var emissionColor = Shader.PropertyToID("_EmissionColor");
         _activeBlock.SetColor(emissionColor, new Color(36 / 255f * 1.5f, 191 / 255f * 1.5f, 0));
         _inactiveBlock.SetColor(emissionColor, new Color(191 / 255f * 1.5f, 4 / 255f * 1.5f, 0));
+    }
+
+    private void OnEnable()
+    {
+        _onSpawnPlayer.AddListener(OnSpawnPlayer);
+        _gameState.AddListener(InitialiseCheckpointAnimation);
+    }
+
+    private void OnDisable()
+    {
+        _onSpawnPlayer.RemoveListener(OnSpawnPlayer);
+        _gameState.RemoveListener(InitialiseCheckpointAnimation);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,14 +55,21 @@ public class CheckpointComponent : MonoBehaviour
 
     private void ActivateCheckpoint()
     {
-        if (null != _activeCheckpoint.Value)
+        if (_activeCheckpoint.Value == this)
         {
-            _activeCheckpoint.Value._animator.SetInteger(_state, 3);
-            UpdateCheckpointLight(_activeCheckpoint.Value._renderer, _inactiveBlock);
+            InitialiseCheckpointAnimation();
+
+            return;
         }
 
-        _animator.SetInteger(_state, 1);
-        UpdateCheckpointLight(_renderer, _activeBlock);
+        if (null != _activeCheckpoint.Value)
+        {
+            var previous = _activeCheckpoint.Value;
+            AnimateCheckpoint(previous._renderer, _inactiveBlock, previous._animator, 3);
+        }
+
+        _audioSource.PlayDelayed(_soundDelay);
+        AnimateCheckpoint(_renderer, _activeBlock, _animator, 1);
         _activeCheckpoint.Value = this;
     }
 
@@ -55,8 +78,28 @@ public class CheckpointComponent : MonoBehaviour
         _onPlayerHealed.Raise(100f);
     }
 
-    private static void UpdateCheckpointLight(Renderer lightRenderer, MaterialPropertyBlock block)
+    private static void AnimateCheckpoint(Renderer lightRenderer, MaterialPropertyBlock block, Animator animator,
+        int animationState)
     {
         lightRenderer.SetPropertyBlock(block);
+        animator.SetInteger(_state, animationState);
+    }
+
+    private void InitialiseCheckpointAnimation()
+    {
+        if (_animator.GetInteger(_state) == 1 || _gameState.Value != GameState.playing ||
+            _activeCheckpoint.Value != this)
+        {
+            return;
+        }
+
+        _audioSource.PlayDelayed(_soundDelay);
+        AnimateCheckpoint(_renderer, _activeBlock, _animator, 1);
+    }
+
+    private void OnSpawnPlayer()
+    {
+        var previous = _activeCheckpoint.Value;
+        AnimateCheckpoint(previous._renderer, _inactiveBlock, previous._animator, 4);
     }
 }
