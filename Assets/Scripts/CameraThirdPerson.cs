@@ -49,6 +49,7 @@ namespace Camera
 
         private float _yaw = 0;
         private float _pitch = 0;
+        private bool lockedRotation = false;
         private void Awake()
         {
             _transform = GetComponent<Transform>();
@@ -56,7 +57,7 @@ namespace Camera
         
         private void OnEnable()
         {
-            // _playerGameObjectSO.AddListener(PlayerGameObjectChagned);
+            _playerGameObjectSO.AddListener(PlayerGameObjectChanged);
             cameraGameObject.Value = gameObject;
             // Create parent game object following player
             GameObject parentGameObject = new GameObject("Camera Parent");
@@ -70,7 +71,7 @@ namespace Camera
 
         private void OnDisable()
         {
-            // _playerGameObjectSO.RemoveListener(PlayerGameObjectChagned);
+            _playerGameObjectSO.RemoveListener(PlayerGameObjectChanged);
             cameraGameObject.Value = null;
             // Unparent camera and destroy parent game object following player
             _transform.SetParent(null);
@@ -79,19 +80,28 @@ namespace Camera
             
         }
 
-        // private void PlayerGameObjectChagned()
-        // {
-        //     if (_playerGameObjectSO.Value != null)
-        //     {
-        //         DestroyImmediate(GetComponent<AudioListener>());
-        //         _playerGameObjectSO.Value.AddComponent<AudioListener>();
-        //     }
-        //     else
-        //     {
-        //         gameObject.AddComponent<AudioListener>();
-        //     }
-        // }
+        private void PlayerGameObjectChanged()
+        {
+            if (_playerGameObjectSO.Value != null)
+            {
+                lockedRotation = true;
+                Vector3 spawnRotation = new Vector3(30,_playerTransform.rotation.eulerAngles.y, 0 );
+                Debug.Log($"setting camera rotation {spawnRotation}");
+                _cameraParentFollowingPlayer.rotation = Quaternion.Euler(spawnRotation);
+                Invoke("UnlockRotation", .1f);
+                _xAxisView.Value = 0;
+                _yAxisView.Value = 0;
+                _pitch = 30;
+                _yaw = _playerTransform.rotation.eulerAngles.y;
+            }
+        }
 
+        private void UnlockRotation()
+        {
+            lockedRotation = false;
+        }
+
+      
 
         private void FixedUpdate()
         {
@@ -115,12 +125,16 @@ namespace Camera
             
             
             _currentBackwardsDistance = Mathf.Lerp(_currentBackwardsDistance, _targetBackwardsDistance, Time.deltaTime*smoothness);
-            _yaw += _rotationSpeed.Value.x * _xAxisView.Value;
-            _pitch -= _rotationSpeed.Value.y * _yAxisView.Value;
-            _pitch = _pitch.Clamp(-_maxPitch, _maxPitch);
-            _cameraParentFollowingPlayer.eulerAngles = new Vector3(_pitch, _yaw, 0);
+            if (!lockedRotation)
+            {
+                _yaw += _rotationSpeed.Value.x * _xAxisView.Value;
+                _pitch -= _rotationSpeed.Value.y * _yAxisView.Value;
+                _pitch = _pitch.Clamp(-_maxPitch, _maxPitch);
+                _cameraParentFollowingPlayer.eulerAngles = new Vector3(_pitch, _yaw, 0);
+            }
+
             desiredPosition = _cameraParentFollowingPlayer.position -
-                                      _cameraParentFollowingPlayer.forward * _distanceFromPlayerBackwards.Value;
+                              _cameraParentFollowingPlayer.forward * _distanceFromPlayerBackwards.Value;
             if (Physics.Linecast(_cameraParentFollowingPlayer.position, desiredPosition, out RaycastHit hit))
             {
                 _targetBackwardsDistance = Mathf.Clamp((hit.distance * _collisionMargin), 0.8f, _distanceFromPlayerBackwards.Value);
