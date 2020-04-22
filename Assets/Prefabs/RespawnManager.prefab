@@ -43,8 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d179e04e04ed4f849f10b3be9779f94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerStartedEvent: {fileID: 11400000, guid: 928e378d91d238d448f9dcf951227d24,
-    type: 2}
   _activeCheckpoint: {fileID: 11400000, guid: 8b3800a9f1ccb8b4da3a9d54fdd27afc, type: 2}
   _playerReference:
     _useConstant: 0
@@ -60,4 +58,7 @@ MonoBehaviour:
   _playerPrefab: {fileID: 376057604752817231, guid: 1f6af2b0d70a0274f90128b35d326a22,
     type: 3}
   _levelPassedEvent: {fileID: 11400000, guid: d094726796960b542ad03c49034c5bb9, type: 2}
-  playerStarted: {fileID: 11400000, guid: 114f07775e9143e42b312cc7edbe1a2a, type: 2}
+  _eggInvulnerability:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 9b5ac4c628c074942a723edc49fc404f, type: 2}

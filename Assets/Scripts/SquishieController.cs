@@ -108,7 +108,7 @@ public class SquishieController : MonoBehaviour
                 if (c.gameObject == playerObject.Value)
                 {
                     playerHealth.Value -= 9999f;
-                    _onDiedFromDamageType.Raise((int) DamageType.Smashed);
+                    _onDiedFromDamageType.Raise((int) DamageType.Crushed);
                 }
             }
         }

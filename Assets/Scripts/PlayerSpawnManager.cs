@@ -1,4 +1,3 @@
-using System;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 
@@ -14,6 +13,8 @@ public class PlayerSpawnManager : MonoBehaviour
     [SerializeField] private float _respawnTime = 1f;
     [SerializeField] private GameObject _playerPrefab;
     [SerializeField] private GameEvent _levelPassedEvent;
+    [SerializeField] private IntReference _eggInvulnerability;
+
     private void OnEnable()
     {
         _playerDiedEvent.AddListener(OnPlayerDied);
@@ -30,7 +31,6 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private void LevelPassedEvent()
     {
-        // Invoke("RespawnPlayer", .5f);
         Debug.Log($"Level passed");
         RespawnPlayer();
         Time.timeScale = 1;
@@ -40,8 +40,6 @@ public class PlayerSpawnManager : MonoBehaviour
     {
         RespawnPlayer();
     }
-
-
 
     private void DelayedSpawnCall()
     {
@@ -56,21 +54,19 @@ public class PlayerSpawnManager : MonoBehaviour
 
     private void OnPlayerDied()
     {
-        // Time.timeScale = 0.5f;
         Invoke(nameof(RunDeathTransitions), 1f);
     }
 
     private void SpawnPlayer()
     {
-        Debug.Log($"SpawnPlayer()");
-        _playerReference.Value = Instantiate(_playerPrefab, _activeCheckpoint.Value.transform.position, _activeCheckpoint.Value.transform.rotation);
+        _playerReference.Value = Instantiate(_playerPrefab, _activeCheckpoint.Value.transform.position,
+            Quaternion.identity);
     }
 
     private void RespawnPlayer()
     {
         SpawnPlayer();
         _eggHealth.Value = 100;
-        Debug.Log($"timescale set RespawnPlayer");
         Time.timeScale = 1f;
         Invoke(nameof(RunSpawnTransitions), _respawnTime);
     }

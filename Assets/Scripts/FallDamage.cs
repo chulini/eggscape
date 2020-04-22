@@ -19,11 +19,15 @@ public class FallDamage : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (null == _rb)
+        {
+            return;
+        }
+        
         if (_eggInvulnerability.Value > 0)
         {
-            if (_rb != null) {
-                _lastVelocity = _rb.velocity;
-            }
+            _lastVelocity = _rb.velocity;
+            
             return;
         }
 

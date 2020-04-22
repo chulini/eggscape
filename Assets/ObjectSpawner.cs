@@ -14,19 +14,26 @@ public class ObjectSpawner : MonoBehaviour
 
     private bool _spawning;
 
-    void Start()
+    private void Start()
     {
         InvokeRepeating(nameof(SpawnNewObject), 0f, _spawnFrequency);
     }
 
-    void Update()
+    private void Update()
     {
+        if (null == _eggPlayer.Value)
+        {
+            return;
+        }
+
         _spawning = Vector3.Distance(transform.position, _eggPlayer.Value.transform.position) < _playerSpawnDistance;
     }
 
-    private void SpawnNewObject() {
+    private void SpawnNewObject()
+    {
         print("Spawn");
-        if (_spawning) {
+        if (_spawning)
+        {
             Vector3 spawnPosition = transform.position;
             spawnPosition.x += SPos(_spawnRadius.x);
             spawnPosition.y += SPos(_spawnRadius.y);
@@ -36,7 +43,8 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
-    private float SPos(float v) {
+    private float SPos(float v)
+    {
         return Random.Range(-v / 2, v / 2);
     }
 }
