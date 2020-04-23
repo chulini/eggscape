@@ -60,7 +60,7 @@ public class PlayerSpawnManager : MonoBehaviour
     private void SpawnPlayer()
     {
         _playerReference.Value = Instantiate(_playerPrefab, _activeCheckpoint.Value.transform.position,
-            Quaternion.identity);
+            _activeCheckpoint.Value.transform.rotation);
     }
 
     private void RespawnPlayer()
