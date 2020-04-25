@@ -185,6 +185,15 @@ MonoBehaviour:
   effectsAudioSource: {fileID: 2224521339927549318}
   bgMusicAudioSource: {fileID: 8962302271012013738}
   splatClip: {fileID: 8300000, guid: cc14d2594d9af7f468f1aaf5efad93dd, type: 3}
+  mixer: {fileID: 24100000, guid: 55fd92ff34a5c2d49864e814c63b7c81, type: 2}
+  fxVolumeVariable:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 33a0ef3704c76364aae7d7e278357e4d, type: 2}
+  musicVolumeVariable:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: def2a1d6c408f9441ba8597b9322a07c, type: 2}
 --- !u!82 &8962302271012013738
 AudioSource:
   m_ObjectHideFlags: 0
@@ -194,10 +203,11 @@ AudioSource:
   m_GameObject: {fileID: 5288459188842197819}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7839822285045004537, guid: 55fd92ff34a5c2d49864e814c63b7c81,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 194aef1791ea7d5499b8facc057faadf, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.035
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -290,7 +300,8 @@ AudioSource:
   m_GameObject: {fileID: 5288459188842197819}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7267179667964327378, guid: 55fd92ff34a5c2d49864e814c63b7c81,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
