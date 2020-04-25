@@ -106,7 +106,8 @@ public class UIManager : MonoBehaviour
 
     public void QuitClicked()
     {
-        Application.Quit();
+         if (Application.platform != RuntimePlatform.WebGLPlayer)
+            Application.Quit();
     }
 
 }
