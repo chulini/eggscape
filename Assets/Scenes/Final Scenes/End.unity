@@ -477,7 +477,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1644,7 +1644,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1933,6 +1933,7 @@ GameObject:
   - component: {fileID: 653048360}
   - component: {fileID: 653048359}
   - component: {fileID: 653048358}
+  - component: {fileID: 653048361}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2064,10 +2065,11 @@ AudioSource:
   m_GameObject: {fileID: 653048352}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7839822285045004537, guid: 55fd92ff34a5c2d49864e814c63b7c81,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 188085986ce0e3140af375aadca9772f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.15
+  m_Volume: 0.299
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2160,10 +2162,11 @@ AudioSource:
   m_GameObject: {fileID: 653048352}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7267179667964327378, guid: 55fd92ff34a5c2d49864e814c63b7c81,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 8916913a15504fc4da19641b18f274d0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.238
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2263,6 +2266,31 @@ MonoBehaviour:
   fxDelay: 2.5
   bgSoundAudioSource: {fileID: 653048358}
   bgMusicDelay: 1.5
+--- !u!114 &653048361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653048352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1552527cd4593e4f8da6576dc278ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDied: {fileID: 11400000, guid: 3bde3763da4ee8048bfb033b653d807d, type: 2}
+  effectsAudioSource: {fileID: 653048359}
+  bgMusicAudioSource: {fileID: 653048358}
+  splatClip: {fileID: 8300000, guid: cc14d2594d9af7f468f1aaf5efad93dd, type: 3}
+  mixer: {fileID: 24100000, guid: 55fd92ff34a5c2d49864e814c63b7c81, type: 2}
+  fxVolumeVariable:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 33a0ef3704c76364aae7d7e278357e4d, type: 2}
+  musicVolumeVariable:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: def2a1d6c408f9441ba8597b9322a07c, type: 2}
 --- !u!1 &661524800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2896,7 +2924,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -8355,7 +8383,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -9026,7 +9054,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
