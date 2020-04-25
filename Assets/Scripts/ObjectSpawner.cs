@@ -11,6 +11,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private float _spawnFrequency;
     [SerializeField] private float _playerSpawnDistance;
     [SerializeField] private GameObjectReference _eggPlayer;
+    [Header("DEBUG")]
+    [SerializeField] private bool _verboseOutput = false;
 
     private bool _spawning;
 
@@ -31,14 +33,14 @@ public class ObjectSpawner : MonoBehaviour
 
     private void SpawnNewObject()
     {
-        print("Spawn");
+        if(_verboseOutput) print("Spawn");
         if (_spawning)
         {
             Vector3 spawnPosition = transform.position;
             spawnPosition.x += SPos(_spawnRadius.x);
             spawnPosition.y += SPos(_spawnRadius.y);
             spawnPosition.z += SPos(_spawnRadius.z);
-            print("Spawn! " + spawnPosition);
+            if(_verboseOutput) print("Spawn! " + spawnPosition);
             Instantiate(_spawnObject, spawnPosition, Quaternion.identity);
         }
     }
