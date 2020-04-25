@@ -8,6 +8,7 @@ public class CheckpointComponent : MonoBehaviour
     [SerializeField] private CheckpointComponentVariable _activeCheckpoint;
     [SerializeField] private FloatGameEvent _onPlayerHealed;
     [SerializeField] private GameObject _checkpointLight;
+    [SerializeField] private GameObject _checkpointSpawnReference;
     [SerializeField] private GameEvent _onSpawnPlayer;
     [SerializeField] private GameStateVariable _gameState;
     [SerializeField] private bool _respawnerVisible = true;
@@ -19,12 +20,14 @@ public class CheckpointComponent : MonoBehaviour
     private static readonly int _state = Animator.StringToHash("state");
     private AudioSource _audioSource;
     private const float _soundDelay = 0.33f;
+    private Transform _spawnTransform;
 
-    private void Start()
+    private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponentInChildren<Animator>();
         _renderer = _checkpointLight.GetComponent<MeshRenderer>();
+        _spawnTransform = _checkpointSpawnReference.transform;
         _activeBlock = new MaterialPropertyBlock();
         _inactiveBlock = new MaterialPropertyBlock();
         var emissionColor = Shader.PropertyToID("_EmissionColor");
@@ -112,5 +115,10 @@ public class CheckpointComponent : MonoBehaviour
     {
         var previous = _activeCheckpoint.Value;
         AnimateCheckpoint(previous._renderer, _inactiveBlock, previous._animator, DoorState.ForceClose);
+    }
+
+    public Transform GetSpawnTransform()
+    {
+        return _spawnTransform;
     }
 }

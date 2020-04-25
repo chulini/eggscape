@@ -85,6 +85,7 @@ MonoBehaviour:
   _activeCheckpoint: {fileID: 11400000, guid: 8b3800a9f1ccb8b4da3a9d54fdd27afc, type: 2}
   _onPlayerHealed: {fileID: 11400000, guid: ce75905272ee10245b75c9972a54826f, type: 2}
   _checkpointLight: {fileID: 6333977923514841228}
+  _checkpointSpawnReference: {fileID: 9172922239538466435}
   _onSpawnPlayer: {fileID: 11400000, guid: 6a61ef28937ed6c4991f17f939e1958c, type: 2}
   _gameState: {fileID: 11400000, guid: 0064ce52d0c529d498602112c258be96, type: 2}
   _respawnerVisible: 1
@@ -185,6 +186,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &9172922239538466435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5638385704317501056}
+  m_Layer: 2
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5638385704317501056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9172922239538466435}
+  m_LocalRotation: {x: -0, y: -0.7071073, z: -0, w: 0.70710635}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9221560801384104209}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 0}
 --- !u!1001 &4216253801355749899
 PrefabInstance:
   m_ObjectHideFlags: 0
