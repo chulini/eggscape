@@ -67,6 +67,10 @@ public class PlayerInput : MonoBehaviour
 
     private void TogglePaused()
     {
+        if (currentGameState.Value == GameState.startMenu) {
+            return;
+        }
+
         if (currentGameState.Value == GameState.cinematic)
         {
             _onSkipCinematic.Raise();
