@@ -32,6 +32,8 @@ public class SquishieController : MonoBehaviour
     private Vector3 _spawnPosition;
     private AudioSource _audioSource;
 
+    [SerializeField] private float _audioActivationDistance;
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -142,7 +144,7 @@ public class SquishieController : MonoBehaviour
         if (playerGameObject.Value != null)
         {
             var distance = (playerGameObject.Value.transform.position - transform.position).magnitude;
-            if (distance < 4)
+            if (distance < _audioActivationDistance)
             {
                 cameraShakeEvent.Raise(Mathf.Lerp(.3f, .0f, ((distance - 1f) / 4f)));
                 _audioSource.Stop();

@@ -200,6 +200,7 @@ MonoBehaviour:
     type: 2}
   actualBoxCollider: {fileID: 8857200747061699164}
   delayTime: 1
+  _audioActivationDistance: 20
 --- !u!82 &9062476923174209975
 AudioSource:
   m_ObjectHideFlags: 0
